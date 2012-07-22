@@ -6,6 +6,10 @@
     "name": "Michael Pecherstorfer",
     "email": "michael.pecherstorfer@gmx.at"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpecherstorfer/pat"
+  },
   "main": "./lib/pat.js",
   "keywords": [
     "format",
