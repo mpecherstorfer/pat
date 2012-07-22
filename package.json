@@ -1,0 +1,32 @@
+{
+  "name": "pat",
+  "description": "Formats data described by format strings",
+  "version": "0.0.1",
+  "author": {
+    "name": "Michael Pecherstorfer",
+    "email": "michael.pecherstorfer@gmx.at"
+  },
+  "main": "./lib/pat.js",
+  "keywords": [
+    "format",
+    "formatter",
+    "formatstring",
+    "format specifier",
+    "java.util.Formatter",
+    "sprintf",
+    "strftime",
+    "string.format"
+  ],
+  "devDependencies": {
+  	"yuidocjs": "0.3.x",
+  	"mocha": "1.2.x",
+  	"expect.js": "0.1.x",
+  	"sinon": "1.3.x",
+  	"sinon-expect": "0.1.x",
+  	"node-inspector": "0.2.x",
+  	"requirejs": "2.0.x"
+  },
+  "engines": {
+    "node": "*"
+  }
+}

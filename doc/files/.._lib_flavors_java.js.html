@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>..&#x2F;lib&#x2F;flavors&#x2F;java.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.5.1&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.5.1&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/cultures.deAT.html">cultures.deAT</a></li>
+            
+                <li><a href="..&#x2F;classes/cultures.deDE.html">cultures.deDE</a></li>
+            
+                <li><a href="..&#x2F;classes/cultures.enUS.html">cultures.enUS</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.html">flavors.java</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Formatter.html">flavors.java.Formatter</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Formatter.number.html">flavors.java.Formatter.number</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Formatter.number.localize.html">flavors.java.Formatter.number.localize</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Formatter.util.html">flavors.java.Formatter.util</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Parser.html">flavors.java.Parser</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Scanner.html">flavors.java.Scanner</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Scanner.tokenCategories.html">flavors.java.Scanner.tokenCategories</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.html">Formatter</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.date.html">Formatter.date</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.number.html">Formatter.number</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.util.html">Formatter.util</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.util.date.html">Formatter.util.date</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.util.number.html">Formatter.util.number</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/cultures.html">cultures</a></li>
+            
+                <li><a href="..&#x2F;modules/flavors.html">flavors</a></li>
+            
+                <li><a href="..&#x2F;modules/pat.html">pat</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: ..&#x2F;lib&#x2F;flavors&#x2F;java.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;**
+ * Formatting data described by format specifiers of a certain flavor.
+ * 
+ * @module pat
+ * @submodule flavors
+ *&#x2F;
+&#x2F;**
+ * Represents a data formatter that parses format specifiers known from Java&#x27;s
+ * Formatter class (java.util.Formatter).
+ * 
+ * The module includes a Scanner, a Parser and the format function. It exports
+ * itself as a Node module, an AMD module or to the global scope, depending on
+ * the environment.
+ * 
+ * @static
+ * @class java
+ * @namespace flavors
+ *&#x2F;
+&#x2F;**
+ * @license FreeBSD License
+ * @date 2012-06-27
+ * @author Michael Pecherstorfer
+ *&#x2F;
+
+
+&#x2F;*global define, module*&#x2F;
+&#x2F;*jslint nomen:true plusplus:true maxlen:85*&#x2F;
+
+
+(function(root) {
+    
+    &#x27;use strict&#x27;;
+    
+    var mod, &#x2F;&#x2F;module to export
+        Formatter,
+        Scanner,
+        Parser,
+        format,
+        parser,
+        __ = {}; &#x2F;&#x2F;private section
+    
+    &#x2F;*
+     * Throws an error with the given message.
+     *&#x2F;
+    function err(msg) {
+        throw new Error(msg);
+    }
+    &#x2F;*
+     * Throws an error corresponding to invalid Scanner&#x2F;Parser input.
+     *&#x2F;
+    function inputErr(input, start, hint) {
+        var i = input,
+            n = 10, &#x2F;&#x2F;display input[i] and the next n chars max
+            len = input.length,
+            msg = [&#x27;Invalid format specifier at zero based index &#x27;,
+                start,
+                &#x27;.\n&#x27;,
+                input[start]].join(&#x27;&#x27;);
+                
+        if (i + n &lt; len) { len = i + n; }
+        while (i &lt; len) { msg += input[i++]; }
+        err(msg + &#x27;...\n^\n&#x27; + hint);
+    }
+    
+    &#x2F;**
+     * Java flavored data formatter.
+     * @static
+     * @class flavors.java.Formatter
+     *&#x2F;
+    Formatter = {};
+    &#x2F;**
+     * Utility functions.
+     * @static
+     * @class flavors.java.Formatter.util
+     *&#x2F;
+    Formatter.util = {};
+    &#x2F;**
+     * Appends or prepends spaces to the given array until it has the given
+     * length.
+     * @static
+     * @chainable
+     * @method spacePad
+     * @param {Array} array
+     * @param {Number} width Resulting width of the given array
+     * @param {Boolean} [prepend = false] Whether to append or prepend to the
+     *        given array
+     * @return {Formatter.util}
+     *&#x2F;
+    Formatter.util.spacePad = function(array, width, prepend) {
+        prepend = Boolean(prepend);
+        var delta = width - array.length,
+            i;
+        if (delta &gt; 0) {
+            for (i = 0; i &lt; delta; i++) {
+                if (prepend) {
+                    array.unshift(&#x27; &#x27;);
+                } else {
+                    array.push(&#x27; &#x27;);
+                }
+            }
+        }
+        return this;
+    };
+    &#x2F;**
+     * Java flavored number formatter.
+     * @static
+     * @class flavors.java.Formatter.number
+     *&#x2F;
+    Formatter.number = {
+        &#x2F;**
+         * Default mantissa precision for number strings in computerized
+         * scientific notation.
+         * @final @static
+         * @property DEFAULT_PRECISION
+         * @type {Number}
+         *&#x2F;
+        DEFAULT_PRECISION: 6,
+        &#x2F;**
+         * Default exponent width (excluding &#x27;e&#x27; and sign) for number strings
+         * in computerized scientific notation.
+         * @final @static
+         * @property DEFAULT_MIN_EXPONENT_WIDTH
+         * @type {Number}
+         *&#x2F;
+        DEFAULT_MIN_EXPONENT_WIDTH: 2
+    };
+    &#x2F;**
+     * Java number localization algorithm.
+     * @static 
+     * @class flavors.java.Formatter.number.localize
+     *&#x2F;
+    Formatter.number.localize = {
+        &#x2F;**
+         * @final @static
+         * @property ASCII_ZERO ASCII code for &#x27;0&#x27; (48)
+         * @type {Number}
+         *&#x2F;
+        ASCII_0: 48,
+        &#x2F;**
+         * @final @static
+         * @property ASCII_9 ASCII code for &#x27;9&#x27; (57)
+         * @type {Number}
+         *&#x2F;
+        ASCII_9: 57
+    };
+    &#x2F;**
+     * Java number localization algorithm.
+     * Each digit character d in the string is replaced by a culture-specific
+     * digit computed relative to the current culture&#x27;s zero digit z; that is
+     * d - &#x27;0&#x27; + z.
+     * @static
+     * @method digits
+     * @param {Array} arg Character array representing the Number to be localized
+     * @para {Object} culture Culture specific information
+     * @return undefined
+     *&#x2F;
+    Formatter.number.localize.digits = function(arg, culture) {
+        var i = arg.length - 1,
+            z = culture.zeroDigit.charCodeAt(0),
+            c;
+        while (i &gt;= 0) {
+            c = arg[i].charCodeAt(0);
+            if (this.ASCII_0 &lt;= c &amp;&amp; c &lt;= this.ASCII_9) { &#x2F;&#x2F;localize digits
+                arg[i] = String.fromCharCode(c - this.ASCII_0 + z);
+            }
+            i--;
+        }
+    };
+    &#x2F;**
+     * Java number localization algorithm.
+     * If a decimal separator is present, a culture-specific decimal separator
+     * is substituted.
+     * @static
+     * @method decimalSeparator
+     * @param {Array} arg Character array representing the Number to be localized
+     * @param {Object} culture Culture information
+     * @return undefined
+     *&#x2F;
+    Formatter.number.localize.decimalSeparator = function(arg, culture) {
+        var pos = arg.indexOf(&#x27;.&#x27;);
+        if (pos &gt;= 0) {
+            arg[pos] = culture.decimalSeparator;
+        }
+    };
+    &#x2F;**
+     * Java number localization algorithm.
+     * If the &#x27;,&#x27; (&#x27;\u002c&#x27;) flag is given, then the culture-specific grouping
+     * separator is inserted by scanning the integer part of the string from
+     * least significant to most significant digits and inserting a separator
+     * at intervals defined by the culture&#x27;s grouping size.
+     * @static
+     * @method groupingSeparator
+     * @param {Array} arg Character array representing the Number to be localized
+     * @param {Object} culture Culture information
+     * @result undefined
+     *&#x2F;
+    Formatter.number.localize.groupingSeparator = function(arg, culture) {
+        var i = arg.length - 1,
+            j = culture.groupingSize - 1;
+        while (i &gt;= 0) {
+            if (j === 0 &amp;&amp; i !== 0) {
+                arg.splice(i, 0, culture.groupingSeparator);
+                j = culture.groupingSize;
+            }
+            i--;
+            j--;
+        }
+    };
+    &#x2F;**
+     * Java number localization algorithm.
+     * If the &#x27;0&#x27; flag is given, then the culture-specific zero digits are
+     * inserted after the sign character, if any, and before the first non-zero
+     * digit, until the length of the string is equal to the requested field
+     * width.
+     * @static
+     * @method localize
+     * @param {Array} arg Character array representing the Number to be localized
+     * @param {Number} width Length of the resulting string
+     * @param {Object} culture Culture information
+     * @return undefined
+     *&#x2F;
+    Formatter.number.localize.zeroPad = function(arg, width, culture) {
+        var len = arg.length,
+            delta = width - len,
+            pos = 0,
+            i = 0;
+        if (delta &gt; 0) {
+            while (i &lt; len &amp;&amp; (
+                arg[i] === &#x27;-&#x27; ||
+                arg[i] === &#x27;+&#x27; ||
+                arg[i] === &#x27;0&#x27;)) { i++; }
+            if (i &lt; len) {
+                pos = i;
+                for (i = 0; i &lt; delta; i++) {
+                    arg.splice(pos, 0, culture.zeroDigit);
+                }
+            }
+        }
+    };
+    &#x2F;**
+     * Java flavored number localization algorithm.
+     * 
+     * If the value is negative and the &#x27;(&#x27; flag is given, then a &#x27;(&#x27; is
+     * prepended and a &#x27;)&#x27; is appended.
+     * 
+     * If the value is negative and &#x27;(&#x27; flag is not given, then a &#x27;-&#x27; is
+     * prepended.
+     * 
+     * If the &#x27;+&#x27; flag is given and the value is positive or zero, then a &#x27;+&#x27;
+     * will be prepended.
+     * 
+     * If the &#x27; &#x27; flag is given and the value is positive or zero, then a &#x27; &#x27;
+     * will be prepended.
+     * 
+     * @static
+     * @method sign
+     * @param {Array} arg Character array representing the Number to be localized
+     * @param {Object} opt Sign options
+     * @return undefined
+     *&#x2F;
+    Formatter.number.localize.sign = function(arg, opt) {
+        if (arg[0] === &#x27;-&#x27;) { &#x2F;&#x2F;negative value
+            if (opt.parenthesesWhenNegative) {
+                arg[0] = &#x27;(&#x27;;
+                arg.push(&#x27;)&#x27;);
+            }
+        } else { &#x2F;&#x2F;positive value
+            if (opt.leadingPlusWhenPositive) {
+                arg.unshift(&#x27;+&#x27;);
+            } else if (opt.leadingSpaceWhenPositive) {
+                arg.unshift(&#x27; &#x27;);
+            }
+        }
+    };
+    &#x2F;**
+     * Java localization algorithm for number strings.
+     * @static
+     * @method localizeNumber
+     * @param {String} arg Number string to be localized
+     * @param {Object} culture Culture-specific information
+     * @param {Number} width The result&#x27;s minimum width
+     * @param {Object} options Localization options (Options of a parsed token)
+     * @return {String} The localized number string
+     *&#x2F;
+    Formatter.number.localize.localizeNumber = function(
+            arg,
+            culture,
+            width,
+            options) {
+        var r = arg.split(&#x27;&#x27;);
+        this.digits(r, culture);
+        this.decimalSeparator(r, culture);
+        if (options.localizedGroupingSeparator) {
+            this.groupingSeparator(r, culture);
+        }
+        if (options.zeroPad) {
+            this.zeroPad(r, width, culture);
+        }
+        this.sign(r, options);
+        if (!options.zeroPad &amp;&amp; width) { &#x2F;&#x2F;pad with spaces
+            Formatter.util.spacePad(r, width, !options.leftJustify);
+        }
+        return r.join(&#x27;&#x27;);
+    };
+    
+    &#x2F;**
+     * Allocates a new Scanner for Java format specifiers.
+     * @constructor
+     * @class flavors.java.Scanner
+     * @param {String|Array} input String or character array to be scanned
+     * @return {Scanner} New Scanner instance
+     *&#x2F;
+    Scanner = function(input) {
+        if (!(this instanceof Scanner)) { return new Scanner(input); }
+        this.input(input);
+    };
+    &#x2F;**
+     * Different categories of scanned tokens.
+     * @static
+     * @class flavors.java.Scanner.tokenCategories
+     *&#x2F;
+    Scanner.tokenCategories = {
+        &#x2F;**
+         * Represents a token of general conversion type.
+         * @final @static
+         * @property general
+         * @type {Number}
+         *&#x2F;
+        general: 0,
+        &#x2F;**
+         * Represents a token to be formatted as a character.
+         * @final @static
+         * @property character
+         * @type {Number}
+         *&#x2F;
+        character: 1,
+        &#x2F;**
+         * Represents a token to be formatted as an integer.
+         * @final @static
+         * @property integral
+         * @type {Number}
+         *&#x2F;
+        integral: 2,
+        &#x2F;**
+         * Represents a token to be formatted as a floating point number.
+         * @final @static
+         * @property floatingPoint
+         * @type {Number}
+         *&#x2F;
+        floatingPoint: 3,
+        &#x2F;**
+         * Represents a token to be formatted as a date.
+         * @final @static
+         * @property datetime
+         * @type {Number}
+         *&#x2F;
+        datetime: 4,
+        &#x2F;**
+         * Represents the percent literal token.
+         * @final @static
+         * @property percent
+         * @type {Number}
+         *&#x2F;
+        percent: 5,
+        &#x2F;**
+         * Represents the line separator literal token.
+         * @final @static
+         * @property lineSeparator
+         * @type {Number}
+         *&#x2F;
+        lineSeparator: 6,
+        &#x2F;**
+         * Represents a string token.
+         * @final @static
+         * @property text
+         * @type {Number}
+         *&#x2F;
+        text: 7
+    };
+    &#x2F;**
+     * Resets this Scanner&#x27;s state.
+     * @chainable
+     * @method reset
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.reset = function() {
+        this._in = [];
+        this._ch = &#x27;&#x27;; &#x2F;&#x2F;current input character
+        this._iNextCh = 0; &#x2F;&#x2F;points to the next input character
+        this._iArg = -1;
+        this._iPrevArg = -1;
+        this._token = null;
+        return this;
+    };
+    &#x2F;**
+     * Sets or returns this Scanner&#x27;s input.
+     * @chainable
+     * @method input
+     * @for flavors.java.Scanner
+     * @param {String|Array} [input] String or character array to be scanned
+     * @return {Scanner|Array} This Scanner if called as setter, this Scanner&#x27;s
+     *         current input if called as getter.
+     *&#x2F;
+    Scanner.prototype.input = function(input) {
+        if (arguments.length === 0) { return this._in; }
+        this.reset();
+        if (input) { this._in = __.fmt.util.toArray(input); }
+    };
+    &#x2F;**
+     * Throws an error using the given hint for the error message.
+     * The error message includes the relevant input substring, the index of
+     * the error prone character within the input, and the given hint.
+     * @method err
+     * @for flavors.java.Scanner
+     * @param {String} hint To be included in the error message
+     *&#x2F;
+    Scanner.prototype.err = function(hint) {
+        inputErr(this._input, this._iNextCh - 1, hint);
+    };
+    &#x2F;*
+     * Reads the next character of the input.
+     * @chainable
+     * @method readCh
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.readCh = function() {
+        this._ch = this._in[this._iNextCh++];
+    };
+    &#x2F;*
+     * Returns true if the current character is a digit, false otherwise.
+     * @method isDigit
+     * @for flavors.java.Scanner
+     * @return {Boolean}
+     *&#x2F;
+    Scanner.prototype.isDigit = function() {
+        return &#x27;0&#x27; &lt;= this._ch &amp;&amp; this._ch &lt;= &#x27;9&#x27;;
+    };
+    &#x2F;*
+     * Throws an error if the current character does not represent a digit.
+     * @chainable
+     * @method expectDigit
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.expectDigit = function() {
+        if (!this.isDigit()) { this.err(&#x27;Digit expected.&#x27;); }
+        return this;
+    };
+    &#x2F;*
+     * Throws an error if the current character is not equal to the given one.
+     * @chainable
+     * @method expectCh
+     * @for flavors.java.Scanner
+     * @param {String} val Expected character
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.expectCh = function(val) {
+        if (this._ch !== val) { this.err(&quot;&#x27;&quot; + val + &quot;&#x27;&quot; + &#x27; expected.&#x27;); }
+        return this;
+    };
+    &#x2F;*
+     * Throws an error if the current character is falsy, e.g. after the last
+     * input character has been read.
+     * @chainable
+     * @method expectAnyCh
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.expectAnyCh = function() {
+        if (!this._ch) { this.err(&#x27;Unexpected string end.&#x27;); }
+        return this;
+    };
+    &#x2F;*
+     * Reads digit after digit and returns the value as a Number. Expects the
+     * current character to be a digit. Stops reading as soon as the current
+     * character does not represent a digit.
+     * @method readNumber
+     * @for flavors.java.Scanner
+     * @return {Number}
+     *&#x2F;
+    Scanner.prototype.readNumber = function() {
+        var result = this._ch;
+        this.readCh();
+        while(this.isDigit()) {
+            result += this._ch;
+            this.readCh();
+        }
+        return Number(result);
+    };
+    &#x2F;*
+     * Reads the character sequence that starts with the current character and
+     * ends with the character before the next &#x27;%&#x27;. If there is not a next &#x27;%&#x27;
+     * sign then it will read the substring from the current character to the
+     * input end.
+     * @chainable
+     * @method readText
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.readText = function() {
+        var end = this._in.indexOf(&#x27;%&#x27;, this._iNextCh);
+        if (end &gt;= 0) {
+            this._token.value = this._in.slice(this._iNextCh - 1, end).join(&#x27;&#x27;);
+            this._iNextCh = end;
+        } else {
+            this._token.value = this._in.slice(this._iNextCh - 1).join(&#x27;&#x27;);
+            this._iNextCh = this._in.length;
+        }
+        return this;
+    };
+    &#x2F;*
+     * Extracts the conversion sequence.
+     * @chainable
+     * @method readConversion
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.readConversion = function() {
+        function set(token, conversion, category, upperCase) {
+            token.conversion = conversion;
+            token.category = category;
+            token.upperCase = Boolean(upperCase);
+        }
+        switch (this._ch) {
+        case &#x27;b&#x27;: case &#x27;s&#x27;:
+            set(this._token, this._ch, Scanner.tokenCategories.general);
+            break;
+        case &#x27;B&#x27;: case &#x27;S&#x27;:
+            set(this._token, this._ch.toLowerCase(),
+                Scanner.tokenCategories.general, true);
+            break;
+        case &#x27;c&#x27;:
+            set(this._token, this._ch, Scanner.tokenCategories.character);
+            break;
+        case &#x27;C&#x27;:
+            set(this._token, this._ch.toLowerCase(),
+                Scanner.tokenCategories.character, true);
+            break;
+        case &#x27;d&#x27;: case &#x27;o&#x27;: case &#x27;x&#x27;:
+            set(this._token, this._ch, Scanner.tokenCategories.integral);
+            break;        
+        case &#x27;X&#x27;:
+            set(this._token, this._ch.toLowerCase(),
+                Scanner.tokenCategories.integral, true);
+            break;
+        case &#x27;e&#x27;: case &#x27;f&#x27;: case &#x27;g&#x27;: case &#x27;a&#x27;:
+            set(this._token, this._ch, Scanner.tokenCategories.floatingPoint);
+            break;
+        case &#x27;E&#x27;: case &#x27;G&#x27;: case &#x27;A&#x27;:
+            set(this._token, this._ch.toLowerCase(),
+                Scanner.tokenCategories.floatingPoint, true);
+            break;
+        case &#x27;t&#x27;: case &#x27;T&#x27;:
+            set(this._token, &#x27;t&#x27;, Scanner.tokenCategories.datetime,
+                this._ch === &#x27;T&#x27;);
+            this.readCh();
+            this.expectAnyCh();
+            switch (this._ch) {
+            &#x2F;&#x2F;time
+            case &#x27;H&#x27;: case &#x27;I&#x27;: case &#x27;k&#x27;: case &#x27;l&#x27;: case &#x27;M&#x27;: case &#x27;S&#x27;:
+            case &#x27;L&#x27;: case &#x27;p&#x27;: case &#x27;z&#x27;: case &#x27;Z&#x27;: case &#x27;s&#x27;: case &#x27;Q&#x27;:
+            &#x2F;&#x2F;date
+            case &#x27;B&#x27;: case &#x27;b&#x27;: case &#x27;h&#x27;: case &#x27;A&#x27;: case &#x27;a&#x27;: case &#x27;C&#x27;:
+            case &#x27;Y&#x27;: case &#x27;y&#x27;: case &#x27;j&#x27;: case &#x27;m&#x27;: case &#x27;d&#x27;: case &#x27;e&#x27;:
+            case &#x27;V&#x27;:
+            &#x2F;&#x2F;compositions
+            case &#x27;R&#x27;: case &#x27;T&#x27;: case &#x27;r&#x27;: case &#x27;D&#x27;: case &#x27;F&#x27;: case &#x27;c&#x27;:
+                this._token.conversion += this._ch;
+                break;
+            default:
+                this.err(&#x27;Unexpected datetime conversion: \&#x27;&#x27; + this._ch + &#x27;\&#x27;.&#x27;);
+                break;
+            }
+            break;
+        default:
+            this.err(&#x27;Unexpected conversion: \&#x27;&#x27; + this._ch + &#x27;\&#x27;.&#x27;);
+            break;
+        }
+        return this;
+    };
+    &#x2F;*
+     * Extracts the precision.
+     * @chainable
+     * @method readPrecision
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.readPrecision = function() {
+        if (this._ch === &#x27;.&#x27;) {
+            this.readCh();
+            this.expectDigit();
+            this._token.precision = this.readNumber();
+        }
+        return this;
+    };
+    &#x2F;*
+     * Extracts the width.
+     * @chainable
+     * @method readWidth
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.readWidth = function() {
+        if (this.isDigit()) { this._token.width = this.readNumber(); }
+        return this;
+    };
+    &#x2F;*
+     * Extracts the flags.
+     * @chainable
+     * @method readFlags
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.readFlags = function() {
+        switch(this._ch) {
+        case &#x27;-&#x27;:
+            this._token.options.leftJustify = true;
+            this.readCh();
+            this.readFlags();
+            break;
+        case &#x27;#&#x27;:
+            this._token.options.alternateForm = true;
+            this.readCh();
+            this.readFlags();
+            break;
+        case &#x27;+&#x27;:
+            this._token.options.leadingPlusWhenPositive = true;
+            this.readCh();
+            this.readFlags();
+            break;
+        case &#x27; &#x27;:
+            this._token.options.leadingSpaceWhenPositive = true;
+            this.readCh();
+            this.readFlags();
+            break;
+        case &#x27;0&#x27;:
+            this._token.options.zeroPad = true;
+            this.readCh();
+            this.readFlags();
+            break;
+        case &#x27;,&#x27;:
+            this._token.options.localizedGroupingSeparator = true;
+            this.readCh();
+            this.readFlags();
+            break;
+        case &#x27;(&#x27;:
+            this._token.options.parenthesesWhenNegative = true;
+            this.readCh();
+            this.readFlags();
+            break;
+        }
+        return this;
+    };
+    &#x2F;*
+     * Sets the argument index. Used when the format specifier does not include
+     * an explicit or a relative index.
+     * @chainable
+     * @method implicitArgumentIndex
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.implicitArgumentIndex = function() {
+        this._iArg++;
+        this._token.argumentIndex = this._iArg;
+        this._iPrevArg = this._token.argumentIndex;
+        return this;
+    };
+    &#x2F;*
+     * Extracts the argument index.
+     * @chainable
+     * @method readArgumentIndex
+     * @for flavors.java.Scanner
+     * @return {Scanner}
+     *&#x2F;
+    Scanner.prototype.readArgumentIndex = function() {
+        var number = 0,
+            iTmp = this._iNextCh;
+        if (this.isDigit()) {
+            if (this._ch !== 0) {
+                number = this.readNumber();
+                if (this._ch === &#x27;$&#x27;) { &#x2F;&#x2F;absolute index
+                    this._token.argumentIndex = number - 1;
+                    this._iPrevArg = this._token.argumentIndex;
+                    this.readCh();
+                    this.expectAnyCh();
+                } else { &#x2F;&#x2F;implicit index
+                    this.implicitArgumentIndex();
+                    &#x2F;&#x2F; number read was width =&gt; rewind
+                    this._iNextCh = iTmp;
+                    this._ch = this._in[iTmp - 1];
+                }
+            } else { &#x2F;&#x2F;implicit index
+                this.implicitArgumentIndex();
+            }
+        } else if (this._ch === &#x27;&lt;&#x27;) { &#x2F;&#x2F;relative index
+            if (this._iPrevArg &lt; 0) {
+                this.err(&#x27;Missing previous format specifier&#x27;);
+            }
+            this._token.argumentIndex = this._iPrevArg;
+            this.readCh();
+            this.expectAnyCh();
+        } else { &#x2F;&#x2F;implicit index
+            this.implicitArgumentIndex();
+        }
+        return this;
+    };
+    &#x2F;**
+     * Returns true if it&#x27;s possible to scan another token, false otherwise.
+     * @method hasNext
+     * @for flavors.java.Scanner
+     * @return {Boolean}
+     *&#x2F;
+    Scanner.prototype.hasNext = function() {
+        return this._in &amp;&amp; this._in.length &gt; 0 &amp;&amp;
+            &#x2F;&#x2F;iNextCh points to the first char or to any char but the last
+            (this._iNextCh === 0 || this._iNextCh &lt; this._in.length);
+    };
+    &#x2F;**
+     * Returns the next token or undefined if there is no more text to scan.
+     * @method next
+     * @for flavors.java.Scanner
+     * @return {Object}
+     *&#x2F;
+    Scanner.prototype.next = function() {
+        if (!this.hasNext()) { return undefined; }
+        this._token = {
+            category: Scanner.tokenCategories.general,
+            argumentIndex: -1,
+            options: {
+                leftJustify: false,
+                alternateForm: false,
+                leadingPlusWhenPositive: false,
+                leadingSpaceWhenPositive: false,
+                zeroPad: false,
+                localizedGroupingSeparator: false,
+                parenthesesWhenNegative: false
+            },
+            width: false,
+            precision: false,
+            conversion: &#x27;&#x27;,
+            upperCase: false,
+            startIndex: 0,
+            value: null
+        };
+        this._token.startIndex = this._iNextCh;
+        this.readCh();
+        if (this._ch === &#x27;%&#x27;) {
+            this.readCh();
+            this.expectAnyCh();
+            switch (this._ch) {
+            case &#x27;%&#x27;:
+                this._token.conversion = this._ch;
+                this._token.category = Scanner.tokenCategories.percent;
+                break;
+            case &#x27;n&#x27;:
+                this._token.conversion = this._ch;
+                this._token.category = Scanner.tokenCategories.lineSeparator;
+                break;
+            default:
+                this.readArgumentIndex();
+                this.readFlags();
+                this.readWidth();
+                this.readPrecision();
+                this.readConversion();
+                break;
+            }
+        } else {
+            this._token.category = Scanner.tokenCategories.text;
+            this.readText();
+        }
+        return this._token;
+    };
+    
+    &#x2F;**
+     * Allocates a new Parser for Java format specifiers.
+     * @constructor
+     * @class flavors.java.Parser
+     * @return {Parser} New Parser instance
+     *&#x2F;
+    Parser = function() {
+        if (!(this instanceof Parser)) { return new Parser(); }
+        this._scanner = new Scanner();
+        this._target = [];
+    };
+    &#x2F;**
+     * Parses a format specifier of conversion type &#x27;general&#x27;.
+     * @chainable
+     * @method parseGeneral
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {any} fmtArg Value to be formatted
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseGeneral = function(token, fmtArg) {
+        var val = null;
+        switch (token.conversion) {
+        case &#x27;b&#x27;: case &#x27;B&#x27;:
+            val = fmtArg ? &#x27;true&#x27; : &#x27;false&#x27;;
+            break;
+        case &#x27;s&#x27;: case &#x27;S&#x27;:
+            val = String(fmtArg);
+            break;
+        }
+        if (token.upperCase) {
+            val = val.toUpperCase();
+        }
+        if (token.precision &amp;&amp; token.precision &lt; val.length) {
+            val = val.substr(0, token.precision);
+        }
+        if (token.width) {
+            val = __.fmt.util.pad(val, &#x27; &#x27;, token.width, !token.options.leftJustify);
+        }
+        this._target.push(val);
+        return this;
+    };
+    &#x2F;**
+     * Parses a format specifier of conversion type &#x27;character&#x27;
+     * @chainable
+     * @method parseCharacter
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {String|Number} fmtArg String or Unicode code point
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseCharacter = function(token, fmtArg) {
+        var val = null;
+        if (typeof fmtArg === &#x27;string&#x27;) {
+            val = fmtArg.charAt(0);
+        } else if (typeof fmtArg === &#x27;number&#x27;) {
+            val = String.fromCharCode(Math.floor(fmtArg));
+        } else {
+            err(&#x27;Invalid argument. String or Number expected.&#x27;);
+        }
+        if (token.upperCase) {
+            val = val.toUpperCase();
+        }
+        if (token.width) {
+            val = __.fmt.util.pad(val, &#x27; &#x27;, token.width, !token.options.leftJustify);
+        }
+        this._target.push(val);
+        return this;
+    };
+    &#x2F;**
+     * Parses a symbolic number.
+     * @chainable
+     * @method parseSymbolicNumber
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {any} fmtArg Value to be formatted
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseSymbolicNumber = function(token, fmtArg) {
+        if (Number(fmtArg) === Number.NEGATIVE_INFINITY &amp;&amp;
+                token.options.parenthesesWhenNegative) {
+            this._target.push(&#x27;(Infinity)&#x27;);
+        } else {
+            this._target.push(String(Number(fmtArg)));
+        }
+        return this;
+    };
+    &#x2F;**
+     * Parses a decimal integer.
+     * @chainable
+     * @method parseDecInt
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {Number} fmtArg Value to be formatted
+     * @param {Object} fmtOpt Format options
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseDecInt = function(token, fmtArg, fmtOpt) {
+        this._target.push(
+            Formatter.number.localize.localizeNumber(
+                __.fmt.number.toDecimal(Math.floor(fmtArg)),
+                fmtOpt.culture(),
+                token.width,
+                token.options));
+        return this;
+    };
+    &#x2F;**
+     * Parses an octal integer.
+     * @chainable
+     * @method parseOctInt
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {Number} fmtArg Value to be formatted
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseOctInt = function(token, fmtArg) {
+        var val = null;
+        if (fmtArg &gt;= 0) {
+            val = Math.floor(fmtArg).toString(8);
+        } else {
+            val = Number(__.fmt.util.number.twosComplement(-1 * fmtArg))
+                .toString(8);
+        }
+        if (token.options.alternateForm) { &#x2F;&#x2F;with &#x27;0&#x27; prefix
+            val = &#x27;0&#x27; + val;
+        }
+        if (token.width) { &#x2F;&#x2F;space or zero pads
+            if (token.options.zeroPad) {
+                val = __.fmt.util.padLeft(val, &#x27;0&#x27;, token.width);
+            } else {
+                val = __.fmt.util.padLeft(val, &#x27; &#x27;, token.width);
+            }
+        }
+        this._target.push(val);
+        return this;
+    };
+    &#x2F;**
+     * Parses a hexadecimal integer.
+     * @chainable
+     * @method parseHexInt
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {Number} fmtArg Value to be formatted
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseHexInt = function(token, fmtArg) {
+        var val = null;
+        if (fmtArg &gt;= 0) {
+            val = Math.floor(fmtArg).toString(16);
+        } else {
+            val = Number(__.fmt.util.number.twosComplement(-1 * fmtArg))
+                .toString(16);
+        }
+        &#x2F;&#x2F;alternate form: with &#x27;0x&#x27; prefix
+        if (token.options.alternateForm) {
+            if (token.width) {
+                val = token.options.zeroPad ?
+                    &#x27;0x&#x27; + __.fmt.util.padLeft(val, &#x27;0&#x27;, token.width - 2) :
+                    __.fmt.util.padLeft(&#x27;0x&#x27; + val, &#x27; &#x27;, token.width);
+            } else {
+                val = &#x27;0x&#x27; + val;
+            }
+        } else { &#x2F;&#x2F;default form: naked value
+            if (token.width) { &#x2F;&#x2F;space or zero pad
+                val = token.options.zeroPad ?
+                    __.fmt.util.padLeft(val, &#x27;0&#x27;, token.width) :
+                    __.fmt.util.padLeft(val, &#x27; &#x27;, token.width);
+            }
+        }
+        if (token.upperCase) { val = val.toUpperCase(); }
+        this._target.push(val);
+        return this;
+    };
+    &#x2F;**
+     * Parses a format specifier of conversion type &#x27;integral&#x27;.
+     * @chainable
+     * @method parseIntegral
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {any} fmtArg Value to be formatted
+     * @param {Object} fmtOpt Format options
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseIntegral = function(token, fmtArg, fmtOpt) {
+        if (__.fmt.util.number.isSymbolicNumber(fmtArg)) {
+            this.parseSymbolicNumber(token, fmtArg);
+        } else {
+            switch (token.conversion) {
+            case &#x27;d&#x27;: &#x2F;&#x2F;decimal notation
+                this.parseDecInt(token, Number(fmtArg), fmtOpt);
+                break;
+            case &#x27;o&#x27;: &#x2F;&#x2F;octal notation
+                this.parseOctInt(token, Number(fmtArg));
+                break;
+            case &#x27;x&#x27;: &#x2F;&#x2F;hex notation
+                this.parseHexInt(token, Number(fmtArg));
+                break;
+            }
+        }
+        return this;
+    };
+    &#x2F;**
+     * Parses decimal floats.
+     * @chainable
+     * @method parseDecimalFloat
+     * @param {Object} token Token to be parsed
+     * @param {Number} fmtArg Value to be formatted
+     * @param {Object} fmtOpt Format options
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseDecimalFloat = function(token, fmtArg, fmtOpt) {
+        this._target.push(
+            Formatter.number.localize.localizeNumber(
+                __.fmt.number.toDecimal(fmtArg, {
+                    precision: token.precision || token.precision === 0 ?
+                        token.precision :
+                        Formatter.number.DEFAULT_PRECISION,
+                    considerZeroSign: true
+                }),
+                fmtOpt.culture(),
+                token.width,
+                token.options));
+        return this;
+    };
+    &#x2F;**
+     * Parses computerized scientific floats.
+     * @chainable
+     * @method parseComputerizedScientificFloat
+     * @param {Object} token Token to be parsed
+     * @param {Number} fmtArg Value to be formatted
+     * @param {Object} fmtOpt Format options
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseScientificFloat = function(token, fmtArg, fmtOpt) {
+        &#x2F;&#x2F;numbers in scientific notation do not have groups 
+        token.options.localizedGroupingSeparator = false;
+        this._target.push(Formatter.number.localize.localizeNumber(
+            __.fmt.number.toScientific(fmtArg, {
+                precision: token.precision || token.precision === 0 ?
+                    token.precision :
+                    Formatter.number.DEFAULT_PRECISION,
+                expMinWidth: Formatter.number.DEFAULT_MIN_EXPONENT_WIDTH,
+                upperCase: token.upperCase,
+                considerZeroSign: true
+            }),
+            fmtOpt.culture(),
+            token.width,
+            token.options));
+    };
+    &#x2F;**
+     * Parses computerized scientific floats.
+     * @chainable
+     * @method parseGeneralScientificFloat
+     * @param {Object} token Token to be parsed
+     * @param {Number} fmtArg Value to be formatted
+     * @param {Object} fmtOpt Format options
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseGeneralScientificFloat = function(token, fmtArg, fmtOpt) {
+        var r,
+            nIntDigits,
+            lowerBound,
+            upperBound,
+            roundPrec;
+        r = Math.abs(Number(fmtArg));
+        nIntDigits = r === 0 ?
+            1 :
+            Math.floor(Math.log(r) &#x2F; Math.log(10)) + 1;
+        if (token.precision === 0) { token.precision = 1; }
+        if (!token.precision) {
+            token.precision = Formatter.number.DEFAULT_PRECISION;
+        }
+        lowerBound = Math.pow(10, -4);
+        upperBound = Math.pow(10, token.precision);
+        roundPrec = 0 &lt; r &amp;&amp; r &lt; 1 ?
+            token.precision :
+            token.precision - nIntDigits;
+        if (roundPrec &lt; 0) { roundPrec = 0; }
+        r = __.fmt.util.number.round(fmtArg, roundPrec);
+        if (r === 0 || (lowerBound &lt;= Math.abs(r) &amp;&amp; Math.abs(r) &lt; upperBound)) {
+            token.precision = roundPrec;
+            this.parseDecimalFloat(token, r, fmtOpt);
+        } else {
+            token.precision--;
+            this.parseScientificFloat(token, r, fmtOpt);
+        }
+        return this;
+    };
+    &#x2F;**
+     * Parses hexadecimal exponential floats.
+     * @chainable
+     * @method parseGeneralScientificFloat
+     * @param {Number} fmtArg Value to be formatted
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseHexExp = function(fmtArg) {
+        this._target.push(__.fmt.number.toHexExp(fmtArg));
+        return this;
+    };
+    &#x2F;**
+     * Parses a format specifier of conversion type &#x27;floatingPoint&#x27;.
+     * @chainable
+     * @method parseFloatingPoint
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {any} fmtArg Value to be formatted
+     * @param {Object} fmtOpt Format options
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseFloatingPoint = function(token, fmtArg, fmtOpt) {
+        if (__.fmt.util.number.isSymbolicNumber(fmtArg)) {
+            this.parseSymbolicNumber(token, fmtArg);
+        } else {
+            switch (token.conversion) {
+            case &#x27;f&#x27;: &#x2F;&#x2F;decimal format
+                this.parseDecimalFloat(token, Number(fmtArg), fmtOpt);
+                break;
+            case &#x27;e&#x27;: &#x2F;&#x2F;computerized scientific notation
+                this.parseScientificFloat(token, Number(fmtArg), fmtOpt);
+                break;
+            case &#x27;g&#x27;: &#x2F;&#x2F;general scientific notation
+                this.parseGeneralScientificFloat(token, Number(fmtArg), fmtOpt);
+                break;
+            case &#x27;a&#x27;: &#x2F;&#x2F;hexadecimal exponential form
+                this.parseHexExp(token, Number(fmtArg), fmtOpt);
+                break;
+            }
+        }
+        return this;
+    };
+    &#x2F;**
+     * Parses a format specifier of conversion type &#x27;datetime&#x27;
+     * @chainable
+     * @method parseDatetime
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {Date} fmtArg Value to be formatted
+     * @param {Object} fmtOpt Format options
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseDatetime = function(token, fmtArg, fmtOpt) {
+        var val = null;
+        if (!fmtArg || !(fmtArg instanceof Date)) {
+            err(&#x27;Invalid argument. Date expected.&#x27;);
+        }
+        &#x2F;&#x2F;Should the token be formatted based on the time zone provided by the
+        &#x2F;&#x2F;JavaScript interpreter&#x27;s host OS?
+        if (token.options.alternateForm) {
+            fmtArg = new Date(fmtArg.valueOf() +
+                &#x2F;&#x2F;tz offset from UTC in milliseconds
+                fmtArg.getTimezoneOffset() * -60000);
+        }
+        switch (token.conversion) {
+        &#x2F;&#x2F;time
+        case &#x27;tH&#x27;:
+            val = __.fmt.date.hours(fmtArg, true, false);
+            break;
+        case &#x27;tI&#x27;:
+            val = __.fmt.date.hours(fmtArg, true, true);
+            break;
+        case &#x27;tk&#x27;:
+            val = __.fmt.date.hours(fmtArg, false, false);
+            break;
+        case &#x27;tl&#x27;:
+            val = __.fmt.date.hours(fmtArg, false, true);
+            break;
+        case &#x27;tM&#x27;:
+            val = __.fmt.date.minutes(fmtArg, true);
+            break;
+        case &#x27;tS&#x27;:
+            val = __.fmt.date.seconds(fmtArg, true);
+            break;
+        case &#x27;tL&#x27;:
+            val = __.fmt.date.milliseconds(fmtArg, true);
+            break;
+        case &#x27;tp&#x27;:
+            val = (token.upperCase ?
+                __.fmt.date.timeDesignator(fmtArg, fmtOpt.culture()).toUpperCase() :
+                __.fmt.date.timeDesignator(fmtArg, fmtOpt.culture()));
+            break;
+        case &#x27;tz&#x27;:
+            val = (token.options.alternateForm ?
+                __.fmt.date.timezoneOffset(fmtArg) :
+                &#x27;+0000&#x27;);
+            break;
+        case &#x27;tZ&#x27;:
+            val = (token.options.alternateForm ?
+                __.fmt.date.abbreviatedTimezone(fmtArg) :
+                &#x27;GMT&#x27;);
+            break;
+        case &#x27;ts&#x27;:
+            val = __.fmt.util.date.timestamp(fmtArg);
+            break;
+        case &#x27;tQ&#x27;:
+            val = fmtArg.valueOf();
+            break;
+        &#x2F;&#x2F;date
+        case &#x27;tB&#x27;:
+            val = (token.upperCase ?
+                __.fmt.date.monthName(fmtArg, fmtOpt.culture()).toUpperCase() :
+                __.fmt.date.monthName(fmtArg, fmtOpt.culture()));
+            break;
+        case &#x27;tb&#x27;: &#x2F;&#x2F;fall through
+        case &#x27;th&#x27;:
+            val = (token.upperCase ?
+                __.fmt.date.abbreviatedMonthName(fmtArg, fmtOpt.culture())
+                        .toUpperCase() :
+                __.fmt.date.abbreviatedMonthName(fmtArg, fmtOpt.culture()));
+            break;
+        case &#x27;tA&#x27;:
+            val = (token.upperCase ?
+                __.fmt.date.weekdayName(fmtArg, fmtOpt.culture()).toUpperCase() :
+                __.fmt.date.weekdayName(fmtArg, fmtOpt.culture()));
+            break;
+        case &#x27;ta&#x27;:
+            val = (token.upperCase ?
+                __.fmt.date.abbreviatedWeekdayName(fmtArg, fmtOpt.culture())
+                        .toUpperCase() :
+                __.fmt.date.abbreviatedWeekdayName(fmtArg, fmtOpt.culture()));
+            break;
+        case &#x27;tC&#x27;:
+            val = String(__.fmt.util.date.pastCenturies(fmtArg));
+            if (val.length === 1) {
+                val = __.fmt.util.padLeft(val, &#x27;0&#x27;, 2);
+            }
+            break;
+        case &#x27;tY&#x27;:
+            val = __.fmt.date.year(fmtArg, {
+                maxDigits: 4,
+                leadingZeros: true
+            });
+            break;
+        case &#x27;ty&#x27;:
+            val = __.fmt.date.year(fmtArg, {
+                maxDigits: 2,
+                leadingZeros: true
+            });
+            break;
+        case &#x27;tj&#x27;:
+            val = __.fmt.date.dayOfYear(fmtArg, true);
+            break;
+        case &#x27;tm&#x27;:
+            val = __.fmt.date.month(fmtArg, true);
+            break;
+        case &#x27;td&#x27;:
+            val = __.fmt.date.dayOfMonth(fmtArg, true);
+            break;
+        case &#x27;te&#x27;:
+            val = __.fmt.date.dayOfMonth(fmtArg, false);
+            break;
+        case &#x27;tV&#x27;:
+            val = String(__.fmt.util.date.isoWeek(fmtArg));
+            break;
+        &#x2F;&#x2F;compositions
+        case &#x27;tR&#x27;: &#x2F;&#x2F;&quot;%tH:%tM&quot;
+            val = __.fmt.date.hours(fmtArg, true, false) + &#x27;:&#x27; +
+                __.fmt.date.minutes(fmtArg, true);
+            break;
+        case &#x27;tT&#x27;: &#x2F;&#x2F;&quot;%tH:%tM:%tS&quot;
+            val = __.fmt.date.time(fmtArg, true);
+            break;
+        case &#x27;tr&#x27;: &#x2F;&#x2F;&quot;%tI:%tM:%tS %Tp&quot;
+            val = __.fmt.date.hours(fmtArg, true, true) + &#x27;:&#x27; +
+                __.fmt.date.minutes(fmtArg, true) + &#x27;:&#x27; +
+                __.fmt.date.seconds(fmtArg, true) + &#x27; &#x27; +
+                __.fmt.date.timeDesignator(fmtArg, fmtOpt.culture()).toUpperCase();
+            break;
+        case &#x27;tD&#x27;: &#x2F;&#x2F;&quot;%tm&#x2F;%td&#x2F;%ty&quot;
+            val = __.fmt.date.month(fmtArg, true) + &#x27;&#x2F;&#x27; +
+                __.fmt.date.dayOfMonth(fmtArg, true) + &#x27;&#x2F;&#x27; +
+                __.fmt.date.year(fmtArg, {
+                    maxDigits: 2,
+                    leadingZeros: true
+                });
+            break;
+        case &#x27;tF&#x27;: &#x2F;&#x2F;&quot;%tY-%tm-%td&quot;
+            val = __.fmt.date.year(fmtArg, {
+                    maxDigits: 4,
+                    leadingZeros: true
+                }) + &#x27;-&#x27; +
+                __.fmt.date.month(fmtArg, true) + &#x27;-&#x27; +
+                __.fmt.date.dayOfMonth(fmtArg, true);
+            break;
+        case &#x27;tc&#x27;: &#x2F;&#x2F;&quot;%ta %tb %td %tT %tZ %tY&quot;
+            val = [
+                __.fmt.date.abbreviatedWeekdayName(fmtArg, fmtOpt.culture()),
+                __.fmt.date.abbreviatedMonthName(fmtArg, fmtOpt.culture()),
+                __.fmt.date.dayOfMonth(fmtArg, true),
+                __.fmt.date.time(fmtArg, true),
+                (token.options.alternateForm ?
+                    __.fmt.date.abbreviatedTimezone(fmtArg, fmtOpt.culture()) :
+                    &#x27;GMT&#x27;),
+                __.fmt.date.year(fmtArg, {
+                    maxDigits: 4,
+                    leadingZeros: true
+                })
+            ].join(&#x27; &#x27;);
+            break;
+        }
+        if (token.width) {
+            val = __.fmt.util.pad(val, &#x27; &#x27;, token.width, !token.options.leftJustify);
+        }
+        this._target.push(val);
+        return this;
+    };
+    &#x2F;**
+     * Applies the given token to the given format argument.
+     * @chainable
+     * @method parseToken
+     * @for flavors.java.Parser
+     * @param {Object} token Token to be parsed
+     * @param {any} [fmtArg] Value to be formatted
+     * @param {Object} [fmtOpt] Format options
+     * @return {Parser}
+     *&#x2F;
+    Parser.prototype.parseToken = function(token, fmtArg, fmtOpt) {
+        switch (token.category) {
+        case Scanner.tokenCategories.general:
+            this.parseGeneral(token, fmtArg);
+            break;
+        case Scanner.tokenCategories.character:
+            this.parseCharacter(token, fmtArg);
+            break;
+        case Scanner.tokenCategories.integral:
+            this.parseIntegral(token, fmtArg, fmtOpt);
+            break;
+        case Scanner.tokenCategories.floatingPoint:
+            this.parseFloatingPoint(token, fmtArg, fmtOpt);
+            break;
+        case Scanner.tokenCategories.datetime:
+            this.parseDatetime(token, fmtArg, fmtOpt);
+            break;
+        case Scanner.tokenCategories.percent:
+            this._target.push(&#x27;%&#x27;);
+            break;
+        case Scanner.tokenCategories.lineSeparator:
+            this._target.push(fmtOpt.lineSeparator());
+            break;
+        case Scanner.tokenCategories.text:
+            this._target.push(token.value);
+            break;
+        }
+        return this;
+    };
+    &#x2F;**
+     * Parses the given input.
+     * @method parse
+     * @for flavors.java.Parser
+     * @param {String|Array} input String or character array to be parsed
+     * @param {Array} [fmtArgs] Data to be formatted
+     * @param {Object} [fmtOpt] Format options
+     * @return {String} Formatted data
+     *&#x2F;
+    Parser.prototype.parse = function(input, fmtArgs, fmtOpt) {
+        var t = null; &#x2F;&#x2F;token
+        this._target = [];
+        this._scanner.input(input);
+        while (this._scanner.hasNext()) {
+            t = this._scanner.next();
+            if (t.argumentIndex &gt;= 0 &amp;&amp;
+                    t.argumentIndex &gt; fmtArgs.length) {
+                inputErr(input, t.startIndex, &#x27;Invalid argument index&#x27;);
+            }
+            try {
+                this.parseToken(t,
+                    t.argumentIndex &gt;= 0 ? fmtArgs[t.argumentIndex] : undefined,
+                    fmtOpt);
+            } catch (e) {
+                inputErr(input, t.startIndex, e.message);
+            }
+        }
+        return this._target.join(&#x27;&#x27;);
+    };
+    
+    &#x2F;**
+     * Formats the given arguments described by the given formatstring.
+     * @method format
+     * @for flavors.java
+     * @param {String} fstr Format string
+     * @param {Array} [args] Data to be formatted
+     * @return {String} Formatted data
+     *&#x2F;
+    format = function(fstr, formatter, args, options) {
+        if (!fstr || !formatter) { return undefined; }
+        if (!parser) { parser = new Parser(); }
+        __.fmt = formatter;
+        fstr = __.fmt.util.toArray(fstr);
+        return parser.parse(fstr, args, options);
+    };
+    
+    mod = {
+        id: &#x27;java&#x27;,
+        Formatter: Formatter,
+        Scanner: Scanner,
+        Parser: Parser,
+        format: format,
+        _private: __
+    };
+    
+    &#x2F;* Node.js *&#x2F;
+    if (typeof module !== &#x27;undefined&#x27;) {
+        module.exports = mod;
+    }
+    &#x2F;* AMD *&#x2F;
+    else if (typeof define !== &#x27;undefined&#x27; &amp;&amp; define.amd) { &#x2F;&#x2F;AMD
+        define(mod);
+    }
+    &#x2F;* Browser *&#x2F;
+    else if (root) {
+        if (!root.pat) { root.pat = {}; }
+        if (!root.pat._private) { root.pat._private = {}; }
+        if (!root.pat._private.flavors) {
+            root.pat._private.flavors = {};
+            root.pat._private.preferredFlavorId = mod.id;
+        }
+        root.pat._private.flavors.java = mod;
+    }
+    
+}(this));
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

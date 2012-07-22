@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>..&#x2F;lib&#x2F;pat.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.5.1&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.5.1&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/cultures.deAT.html">cultures.deAT</a></li>
+            
+                <li><a href="..&#x2F;classes/cultures.deDE.html">cultures.deDE</a></li>
+            
+                <li><a href="..&#x2F;classes/cultures.enUS.html">cultures.enUS</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.html">flavors.java</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Formatter.html">flavors.java.Formatter</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Formatter.number.html">flavors.java.Formatter.number</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Formatter.number.localize.html">flavors.java.Formatter.number.localize</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Formatter.util.html">flavors.java.Formatter.util</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Parser.html">flavors.java.Parser</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Scanner.html">flavors.java.Scanner</a></li>
+            
+                <li><a href="..&#x2F;classes/flavors.java.Scanner.tokenCategories.html">flavors.java.Scanner.tokenCategories</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.html">Formatter</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.date.html">Formatter.date</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.number.html">Formatter.number</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.util.html">Formatter.util</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.util.date.html">Formatter.util.date</a></li>
+            
+                <li><a href="..&#x2F;classes/Formatter.util.number.html">Formatter.util.number</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/cultures.html">cultures</a></li>
+            
+                <li><a href="..&#x2F;modules/flavors.html">flavors</a></li>
+            
+                <li><a href="..&#x2F;modules/pat.html">pat</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: ..&#x2F;lib&#x2F;pat.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;**
+ * Represents a data formatter. Data to be formatted is described by format
+ * specifiers of a certain flavor.
+ * 
+ * Supported format specifiers:
+ * 
+ * +    Java (java.util.Formatter)
+ * 
+ * @module pat
+ * 
+ * 
+ * @license FreeBSD License
+ * @date 2012-06-27
+ * @author Michael Pecherstorfer
+ *&#x2F;
+
+
+&#x2F;*global define, module*&#x2F;
+&#x2F;*jslint nomen:true plusplus:true maxlen:85*&#x2F;
+
+
+(function(root) {
+    
+    &#x27;use strict&#x27;;
+    
+    var mod = null,
+        &#x2F;&#x2F;private section
+        __ = {
+            cultures: {}, &#x2F;&#x2F;culture module cache
+            flavors: {} &#x2F;&#x2F;flavor module cache
+        },
+        Formatter = null;
+            
+    &#x2F;* Directory containing the culture modules *&#x2F;
+    __.DIR_CULTURES = &#x27;cultures&#x2F;&#x27;;
+    
+    &#x2F;* Directory containing the flavor modules *&#x2F;
+    __.DIR_FLAVORS = &#x27;flavors&#x2F;&#x27;;
+    
+    &#x2F;* Default formatter instance *&#x2F;
+    __.instance = null;
+    
+    &#x2F;* Path to this module, relative to require&#x27;s baseUrl *&#x2F;
+    __.modulePath = &#x27;&#x27;;
+    
+    &#x2F;* This module&#x27;s inital state *&#x2F;
+    __.initialState = {
+        cultures: {},
+        flavors: {},
+        modulePath: &#x27;&#x27;,
+        set: function() {
+            this.cultures = __.deepCopy(__.cultures);
+            this.flavors = __.deepCopy(__.flavors);
+            this.modulePath = __.modulePath;
+        },
+        establish: function() {
+            Formatter.defaultOptions = __.initialDefaultFormatterOptions();
+            __.instance = new Formatter();
+            __.cultures = __.deepCopy(this.cultures);
+            __.flavors = __.deepCopy(this.flavors);
+            __.modulePath = this.modulePath;
+        }
+    };
+    
+    &#x2F;*
+     * Returns the initial default options for a new Formatter.
+     *&#x2F;
+    __.initialDefaultFormatterOptions = function() {
+        return {
+            flavorId: &#x27;java&#x27;,
+            flavor: null,
+            cultureId: &#x27;enUS&#x27;,
+            culture: null,
+            lineSeparator: &#x27;\n&#x27;
+        };
+    };
+    &#x2F;*
+     * Conveniance function throwing an error with the given message.
+     *&#x2F;
+    __.err = function(msg) {
+        throw new Error(msg);
+    };
+    &#x2F;*
+     * Binds the given context to the given function.
+     *&#x2F;
+    __.bind = function(fn, context) {
+        return function() {
+            fn.apply(context, Array.prototype.slice.call(arguments));
+        };
+    };
+    &#x2F;*
+     * Counts the given object&#x27;s own properties.
+     *&#x2F;
+    __.countOwnProperties = function(obj) {
+        var r = 0,
+            key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) { r++; }
+        }
+        return r;
+    };
+    &#x2F;*
+     * Returns the given object&#x27;s own property names.
+     *&#x2F;
+    __.ownPropertyNames = function(obj) {
+        var r = [],
+            key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) { r.push(key); }
+        }
+        return r;
+    };
+    &#x2F;*
+     * Returns a deep copy of the argument.
+     * Properties of the prototype chain are not considered.
+     *&#x2F;
+    __.deepCopy = function(arg) {
+        if (typeof arg !== &#x27;object&#x27;) { return arg; }
+        var key,
+            result = {};
+        for (key in arg) {
+            if (arg.hasOwnProperty(key)) {
+                result[key] = __.deepCopy(arg[key]);
+            }
+        }
+        return result;
+    };
+    &#x2F;*
+     * Returns an accessor for subject. The accessor behaves like a setter or
+     * a getter, depending whether it is called with or without an argument.
+     * 
+     * When called as a setter, the given new value is passed to the accessor&#x27;s
+     * &#x27;syncSetter&#x27; or &#x27;asyncSetter&#x27;, depending whether one of those properties
+     * is defined.
+     * 
+     * If &#x27;syncSetter&#x27; is defined, the result of this function represents the
+     * value to be set. If &#x27;syncSetter&#x27; is not defined, but &#x27;asyncSetter&#x27; is
+     * defined, the new value to be set is passed as a parameter to the callback
+     * function of &#x27;asyncSetter&#x27;. Otherwise the new value is set without
+     * delegating it to another function.
+     *&#x2F;
+    __.accessor = function(subject) {
+        var result,
+            syncSetter,
+            asyncSetter;
+        result = function(newval, fn) {
+            &#x2F;&#x2F;getter
+            if (arguments.length === 0) { return subject; }
+            &#x2F;&#x2F;delegate synchronously
+            if (typeof syncSetter === &#x27;function&#x27;) {
+                subject = syncSetter(newval);
+            }
+            &#x2F;&#x2F;delegate asynchronously
+            else if (typeof asyncSetter === &#x27;function&#x27;) {
+                asyncSetter(newval, function(newval) {
+                    subject = newval;
+                    if (typeof fn === &#x27;function&#x27;) { fn(); }
+                });
+            }
+            &#x2F;&#x2F;set new value without delegating it
+            else { subject = newval; }
+        };
+        result.syncSetter = function(fn) {
+            if (arguments.length === 0) { return syncSetter; }
+            syncSetter = fn;
+        };
+        result.asyncSetter = function(fn) {
+            if (arguments.length === 0) { return asyncSetter; }
+            asyncSetter = fn;
+        };
+        return result;
+    };
+    &#x2F;*
+     * Loads the specified module (Node or AMD environment) and applies the
+     * given callback afterwards.
+     *&#x2F;
+    __.loadModule = function(path, fn) {
+        if (typeof module !== &#x27;undefined&#x27;) { &#x2F;&#x2F;node.js
+            fn(require(&#x27;.&#x2F;&#x27; + path));
+        } else if (typeof define !== &#x27;undefined&#x27; &amp;&amp; define.amd) { &#x2F;&#x2F;AMD
+            &#x2F;&#x2F;include relative to require&#x27;s baseUrl 
+            require([&#x27;.&#x2F;&#x27; + (__.modulePath === &#x27;&#x27; ?
+                path :
+                __.modulePath + &#x27;&#x2F;&#x27; + path)], function(m) { fn(m); });
+        } else { &#x2F;&#x2F;global scope
+            __.err(&#x27;Include the necessary script.&#x27;);
+        }
+    };
+    &#x2F;*
+     * Loads the culture module with the specified ID and applies the given
+     * callback afterwards (if defined). Note that the module has to be named
+     * exactly after the given ID.
+     *&#x2F;
+    __.loadCulture = function(cultureId, fn) {
+        var culture = __.cultures[cultureId];
+        if (!culture) {
+            try {
+                __.loadModule(__.DIR_CULTURES + cultureId, function(culture) {
+                    Formatter.validateCulture(culture);
+                    __.cultures[cultureId] = culture;
+                    if (typeof fn === &quot;function&quot;) { fn(culture); }
+                });
+            } catch (e) {
+                __.err(&#x27;Failed to load culture &#x27; + cultureId + &#x27;: &#x27; + e.message);
+            }
+        } else {
+            fn(culture);
+        }
+    };
+    &#x2F;*
+     * Loads the flavor module with the specified ID and applies the given
+     * callback. Note that the module file has to be named exactly after the
+     * given ID.
+     *&#x2F;
+    __.loadFlavor = function(flavorId, fn) {
+        var flavor = __.flavors[flavorId];
+        if (!flavor) {
+            try {
+                __.loadModule(__.DIR_FLAVORS + flavorId, function(flavor) {
+                    __.flavors[flavorId] = flavor;
+                    if (typeof fn === &quot;function&quot;) { fn(flavor); }
+                });
+            } catch (e) {
+                __.err(&#x27;Failed to load flavor &#x27; + flavorId + &#x27;: &#x27; + e.message);
+            }
+        } else {
+            fn(flavor);
+        }
+    };
+    
+    &#x2F;**
+     * Allocates a new formatter with the specified options.
+     * @constructor
+     * @class Formatter
+     * @param {Object} [options]
+     * @return {Formatter}
+     *&#x2F;
+    Formatter = function(options) {
+        this.options(options);
+    };
+    &#x2F;**
+     * Default options for a new Formatter.
+     * Overwrite this property if you intend to allocate several formatters with
+     * default options different to those initially specified by this module.
+     * @static
+     * @property defaultOptions
+     * @type {Object}
+     *&#x2F;
+    Formatter.defaultOptions = __.initialDefaultFormatterOptions();
+    &#x2F;**
+     * Resets the Formatter.
+     * @static
+     * @chainable
+     * @method reset
+     * @return {Formatter}
+     *&#x2F;
+    Formatter.reset = function() {
+        __.initialState.establish();
+        return Formatter;
+    };
+    &#x2F;**
+     * Tests if the given argument represents a valid culture object.
+     * Throws an error if it is not valid.
+     * @static
+     * @chainable
+     * @method validateCulture
+     * @param {Object} culture
+     * @return {Formatter}
+     *&#x2F;
+    Formatter.validateCulture = function(culture) {
+        var msg = &#x27;Invalid culture: &#x27;;
+        if (typeof culture !== &#x27;object&#x27;) {
+            __.err(msg + &#x27;Not an object&#x27;);
+        }
+        if (culture.id === undefined) {
+            __.err(msg + &#x27;Missing property &quot;id&quot;&#x27;);
+        }
+        &#x2F;* Numbers *&#x2F;
+        if (culture.zeroDigit === undefined) {
+            __.err(msg + &#x27;Missing property &quot;zeroDigit&quot;&#x27;);
+        }
+        if (culture.decimalSeparator === undefined) {
+            __.err(msg + &#x27;Missing property &quot;decimalSeparator&quot;&#x27;);
+        }
+        if (culture.groupingSeparator === undefined) {
+            __.err(msg + &#x27;Missing property &quot;groupingSeparator&quot;&#x27;);
+        }
+        if (culture.groupingSize === undefined) {
+            __.err(msg + &#x27;Missing property &quot;groupingSize&quot;&#x27;);
+        }     
+        &#x2F;* Currency *&#x2F;
+        if (culture.currencySymbol === undefined) {
+            __.err(msg + &#x27;Missing property &quot;currencySymbol&quot;&#x27;);
+        }
+        if (culture.currencyToken === undefined) {
+            __.err(msg + &#x27;Missing property &quot;currencyToken&quot;&#x27;);
+        }
+        &#x2F;* Weekday names *&#x2F;
+        if (culture.weekdays === undefined) {
+            __.err(msg + &#x27;Missing property &quot;weekdays&quot;&#x27;);
+        }
+        if (culture.weekdaysAbbr === undefined) {
+            __.err(msg + &#x27;Missing property &quot;weekdaysAbbr&quot;&#x27;);
+        }
+        if (culture.firstDayOfWeek === undefined) {
+            __.err(msg + &#x27;Missing property &quot;firstDayOfWeek&quot;&#x27;);
+        }
+        &#x2F;* Month names *&#x2F;
+        if (culture.months === undefined) {
+            __.err(msg + &#x27;Missing property &quot;months&quot;&#x27;);
+        }
+        if (culture.monthsAbbr === undefined) {
+            __.err(msg + &#x27;Missing property &quot;monthsAbbr&quot;&#x27;);
+        }
+        &#x2F;* Morning&#x2F;afternoon tokens *&#x2F;
+        if (culture.amToken === undefined) {
+            __.err(msg + &#x27;Missing property &quot;amToken&quot;&#x27;);
+        }
+        if (culture.pmToken === undefined) {
+            __.err(msg + &#x27;Missing property &quot;pmToken&quot;&#x27;);
+        }
+        return Formatter;
+    };
+    &#x2F;**
+     * Sets the Formatter options or returns them if called without an argument.
+     * @static
+     * @chainable
+     * @method options
+     * @param {Object} [options] Formatter options:
+     * 
+      {
+          path: &#x27;.&#x2F;&#x27;,
+          flavorId: &#x27;flavorId&#x27;,
+          cultureId: &#x27;cultureId&#x27;,
+          lineSeparator: &#x27;\n&#x27;
+      }
+     * @return {Formatter|Object}
+     *      Formatter if called as setter, Formatter options if called as getter
+     *&#x2F;
+    Formatter.options = function(options, fn) {
+        &#x2F;&#x2F;delegate to the default formatter instance
+        if (arguments.length &gt; 0) {
+            __.instance.options(options, fn);
+            return Formatter;
+        }
+        return __.instance.options();
+    };
+    &#x2F;**
+     * Formats the given arguments described by the given formatstring.
+     * @static
+     * @method format
+     * @param {String} fstr Format string
+     * @param {any} [data]* Data to be formatted
+     * @return {String} Formatted data
+     *&#x2F;
+    Formatter.format = function(fstr) {
+        &#x2F;&#x2F;delegate to the default formatter instance
+        return __.instance.format.apply(__.instance, arguments);
+    };
+    &#x2F;**
+     * Sets this Formatter&#x27;s options or returns them if called without an
+     * argument.
+     * @chainable
+     * @method options
+     * @param {Object} [options] Formatter options:
+              
+      {
+          path: &#x27;.&#x2F;&#x27;,
+          flavorId: &#x27;flavorId&#x27;,
+          cultureId: &#x27;cultureId&#x27;,
+          lineSeparator: &#x27;\n&#x27;
+      }
+     * @return {Object} This Formatter&#x27;s options if called as a getter, &#x60;this&#x60;
+     *         if called as a setter
+     *&#x2F;
+    Formatter.prototype.options = function(options, fn) {
+        var key,
+            opt,
+            nAsyncReturns = 0,
+            done = function() {
+                if (--nAsyncReturns === 0 &amp;&amp; typeof fn === &#x27;function&#x27;) { fn(); }
+            };
+        if (arguments.length === 0) { return this._options; }
+        if (options) {
+            &#x2F;&#x2F;count options to be delegated asynchronously before setting them
+            for (key in options) {
+                if (options.hasOwnProperty(key) &amp;&amp;
+                        this._options.hasOwnProperty(key) &amp;&amp;
+                        this._options[key].asyncSetter() !== undefined) {
+                    nAsyncReturns++;
+                }
+            }
+            &#x2F;&#x2F;only set properties specified by the given options
+            for (key in options) {
+                if (options.hasOwnProperty(key) &amp;&amp;
+                        this._options.hasOwnProperty(key)) {
+                    this._options[key](options[key], done);
+                }
+            }
+        } else { &#x2F;&#x2F;set default options
+            opt = __.deepCopy(Formatter.defaultOptions);
+            &#x2F;&#x2F;turn option properties into accessors
+            for (key in opt) {
+                if (opt.hasOwnProperty(key)) { opt[key] = __.accessor(opt[key]); }
+            }
+            &#x2F;&#x2F;hook module loaders for flavor and culture changes
+            opt.flavorId.asyncSetter(__.bind(function(flavorId, fn) {
+                __.loadFlavor(flavorId, __.bind(function(flavor) {
+                    this.options({ flavor: flavor });
+                    fn(flavorId);
+                }, this));
+            }, this));
+            opt.cultureId.asyncSetter(__.bind(function(cultureId, fn) {
+                __.loadCulture(cultureId, __.bind(function(culture) {
+                    this.options({ culture: culture });
+                    fn(cultureId);
+                }, this));
+            }, this));
+            this._options = opt;
+        }
+        return this;
+    };
+    &#x2F;**
+     * Formats the given arguments described by the given formatstring.
+     * @method format
+     * @param {String} fstr Format string
+     * @param {any} [data]* Data to be formatted
+     * @return {String} Formatted data
+     *&#x2F;
+    Formatter.prototype.format = function(fstr) {
+        if (arguments.length === 0) { return undefined; }
+        if (!__.cultures[this._options.cultureId()]) {
+            __.err(&#x27;Define a culture first&#x27;);
+        }
+        if (!__.flavors[this._options.flavorId()]) {
+            __.err(&#x27;Define a flavor first&#x27;);
+        }
+        &#x2F;&#x2F;format
+        return __.flavors[this._options.flavorId()].format(
+            typeof fstr === &#x27;string&#x27; ? fstr.split(&#x27;&#x27;) : fstr,
+            Formatter,
+            Array.prototype.slice.call(arguments, 1),
+            this.options());
+    };
+    
+    &#x2F;**
+     * Utility functions.
+     * @static
+     * @class Formatter.util
+     *&#x2F;
+    Formatter.util = {};
+    &#x2F;**
+     * Returns true if the given arg is an Array, false otherwise.
+     * @static
+     * @method isArray
+     * @param {any} arg
+     * @return {Boolean}
+     *&#x2F;
+    Formatter.util.isArray = function(arg) {
+        return Object.prototype.toString.call(arg) === &#x27;[object Array]&#x27;;
+    };
+    &#x2F;**
+     * Returns true if the given arg is a String, false otherwise.
+     * @static
+     * @method isString
+     * @param {any} arg
+     * @return {Boolean}
+     *&#x2F;
+    Formatter.util.isString = function(arg) {
+        return Object.prototype.toString.call(arg) === &#x27;[object String]&#x27;;
+    };
+    &#x2F;**
+     * Returns the argument, a character array or an array of length 1
+     * containing the argument depending whether the argument is an array,
+     * a string or any other value.
+     * @static
+     * @method toArray
+     * @param {any} arg
+     * @return {Array}
+     *&#x2F;
+    Formatter.util.toArray = function(arg) {
+        if (this.isArray(arg)) { return arg; }
+        if (this.isString(arg)) { return arg.split(&#x27;&#x27;); }
+        return [arg];
+    };
+    &#x2F;**
+     * Concatenates the given argument n-1 times with itself and returns the
+     * resulting string.
+     * @static
+     * @method concat
+     * @param {String} arg
+     * @param {Number} [n = 1]
+     * @return {String}
+     *&#x2F;
+    Formatter.util.concat = function(arg, n) {
+        n = n || 1;
+        return new Array(n + 1).join(arg);
+    };
+    &#x2F;**
+     * Appends or prepends the given character to the given string until the
+     * resulting string has the specified length.
+     * @static
+     * @method pad
+     * @param {String} str Append or prepend to this string
+     * @param {String} [ch = &#x27; &#x27;] Character to be appended or prepended
+     * @param {Number} [len = String(str).length] Length of the resulting string
+     * @param {Boolean} [left = false] Prepend if true, append otherwise
+     * @return {String}
+     *&#x2F;
+    Formatter.util.pad = function pad(str, ch, len, left) {
+        str = String(str);
+        ch = ch || &#x27; &#x27;;
+        len = len || str.length;
+        left = Boolean(left);
+        var delta = len - str.length;
+        if (delta &lt;= 0) { return str; }
+        return (left ?
+            this.concat(ch, delta) + str :
+            str + this.concat(ch, delta));
+    };
+    &#x2F;**
+     * Prepends the given character to the given string until the resulting
+     * string has the specified length.
+     * @static
+     * @method padLeft
+     * @param {String} str Prepend to this string
+     * @param {String} [ch = &#x27; &#x27;] Character to be prepended
+     * @param {Number} [len = String(str).length] Length of the resulting string
+     * @return {String}
+     *&#x2F;
+    Formatter.util.padLeft = function(str, ch, len) {
+        return this.pad(str, ch, len, true);
+    };
+    &#x2F;**
+     * Appends the given character to the given string until the resulting
+     * string has the specified length.
+     * @static
+     * @method padRight
+     * @param {String} str Append to this string
+     * @param {String} [ch  = &#x27; &#x27;] Character to be appended
+     * @param {Number} [len = String(str).length] Length of the resulting string
+     * @return {String}
+     *&#x2F;
+    Formatter.util.padRight = function(str, ch, len) {
+        return this.pad(str, ch, len);
+    };
+    
+    &#x2F;**
+     * Number utility functions.
+     * @static
+     * @class Formatter.util.number
+     *&#x2F;
+    Formatter.util.number = {
+        &#x2F;**
+         * Greatest precise integer value in JavaScript.
+         * @final
+         * @static
+         * @property MAX_INT
+         * @type {Number}
+         *&#x2F;
+        MAX_INT: Math.pow(2, 53),
+        &#x2F;**
+         * Greatest precise integer value in two&#x27;s complement range.
+         * @final
+         * @static
+         * @property MAX_SIGNED_INT
+         * @type {Number}
+         *&#x2F;
+        MAX_SIGNED_INT: Math.pow(2, 52) - 1,
+        &#x2F;**
+         * Smallest precise integer value in two&#x27;s complement range.
+         * @final
+         * @static
+         * @property MIN_SIGNED_INT
+         * @type {Number}
+         *&#x2F;
+        MIN_SIGNED_INT: -Math.pow(2, 52)
+    };
+    &#x2F;**
+     * Returns true if the given number is less than zero or negative zero.
+     * @static
+     * @method isSigned
+     * @param {Number} arg
+     * @return {Boolean}
+     *&#x2F;
+    Formatter.util.number.isSigned = function(arg) {
+        if (arg === 0) { return 1&#x2F;arg &lt; 0; }
+        return arg &lt; 0;
+    };
+    &#x2F;**
+     * Returns the given argument rounded to the given precision.
+     * @static
+     * @method round
+     * @param {Number} arg Number to be rounded
+     * @param {Number} [precision=0] Number of precise fractional digits. A
+     *        falsy value specifies fractional precision of 0.
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.number.round = function(arg, precision) {
+        if (!precision || precision &lt; 0) { precision = 0; }
+        var fac = Math.pow(10, precision);
+        return Math.round(arg * fac) &#x2F; fac;
+    };
+    &#x2F;**
+     * Returns the given argument as a Number within the range
+     * [Formatter.util.number.MIN_SIGNED_INT, Formatter.util.number.MAX_SIGNED_INT].
+     * @static
+     * @method signedInt
+     * @param {Number} arg 
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.number.signedInt = function(arg) {
+        var r = Number(arg);
+        if (r &lt; this.MIN_SIGNED_INT) {
+            return this.MIN_SIGNED_INT;
+        }
+        if (r &gt; this.MAX_SIGNED_INT) {
+            return this.MAX_SIGNED_INT;
+        }
+        return r;
+    };
+    &#x2F;**
+     * Returns a decimal integer representing two&#x27;s complement of the given
+     * number.
+     * 
+     * A JavaScript Number is a double-precision floating-point as specified by
+     * the IEEE 754 standard. All positive integers up to 2^53 are represented
+     * precisely, numbers beyond that threshold get their least significant bits
+     * clipped (((Math.pow(2,53) + 1) - Math.pow(2,53) results to 0, not 1).
+     * 
+     * The argument is therefore interpreted as an integer within the range
+     * [-2^52, 2^52-1]. A floating point argument is truncated, an argument out
+     * of the expected range is set to the smallest or to the greatest precise
+     * value depending on whether the argument is smaller than -2^52 or greater
+     * than 2^52-1.
+     * 
+     * @static
+     * @method twosComplement
+     * @param {Number} arg
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.number.twosComplement = function(arg) {
+        var r = this.signedInt(arg);
+        if (r &lt; 0) {
+            return r + this.MAX_INT;
+        }
+        return this.MAX_INT - r;
+    };
+    &#x2F;**
+     * Returns true if the given argument represents a symbolic number (NaN,
+     * POSITIVE_INFINITY, NEGATIVE_INFINITY), false otherwise.
+     * @static
+     * @method isSymbolicNumber
+     * @param {Number} arg
+     * @return {Boolean}
+     *&#x2F;
+    Formatter.util.number.isSymbolicNumber = function(arg) {
+        return String(Number(arg)) === &quot;NaN&quot; ||
+            Number(arg) === Number.POSITIVE_INFINITY ||
+            Number(arg) === Number.NEGATIVE_INFINITY;
+    };
+    &#x2F;**
+     * Date utility functions for the Gregorian calendar.
+     * @static
+     * @class Formatter.util.date
+     *&#x2F;
+    Formatter.util.date = {
+        &#x2F;**
+         * Milliseconds per hour.
+         * @final
+         * @static
+         * @property MILLISECONDS_PER_HOUR
+         * @type Number
+         *&#x2F;
+        MILLISECONDS_PER_HOUR: 3600000,
+        &#x2F;**
+         * Milliseconds per day.
+         * @final
+         * @static
+         * @property MILLISECONDS_PER_DAY
+         * @type Number
+         *&#x2F;
+        MILLISECONDS_PER_DAY: 86400000,
+        &#x2F;**
+         * Milliseconds per week.
+         * @final
+         * @static
+         * @property MILLISECONDS_PER_WEEK
+         * @type Number
+         *&#x2F;
+        MILLISECONDS_PER_WEEK: 604800000
+    };
+    &#x2F;**
+     * Returns the UNIX timestamp of the given date. The UNIX timestamp
+     * describes a UTC date as number of seconds elapsed since the beginning
+     * of the UNIX epoche (Midnight, 1970-01-01). Milliseconds of the given
+     * date are truncated.
+     * @static
+     * @method timestamp
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Number}
+     *&#x2F;
+     Formatter.util.date.timestamp = function(date) {
+        return Math.floor(date.valueOf() &#x2F; 1000);
+    };
+    &#x2F;**
+     * Returns the number of days for the specified month.
+     * @static
+     * @method daysOfMonth
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.date.daysOfMonth = function(date) {
+        var d = new Date(date.valueOf());
+        d.setUTCDate(1);
+        d.setUTCMonth(d.getUTCMonth() + 1);
+        d.setUTCDate(0);
+        return d.getUTCDate();
+    };
+    &#x2F;**
+     * Returns the number of days for the specified year.
+     * @static
+     * @method daysOfYear
+     * @param {Date|Number} arg (Date is interpreted as a UTC value)
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.date.daysOfYear = function(arg) {
+        return this.isLeapYear(arg) ? 366 : 365;
+    };
+    &#x2F;**
+     * Returns true if the specified year is a leap year, false otherwise.
+     * @static
+     * @method isLeapYear
+     * @param {Date|Number} arg (Date is interpreted as a UTC value)
+     * @return {Boolean}
+     *&#x2F;
+    Formatter.util.date.isLeapYear = function(arg) {
+        if (arg instanceof Date) { arg = arg.getUTCFullYear(); }
+        return arg % 4 === 0 &amp;&amp; (arg % 100 !== 0 || arg % 400 === 0);
+    };
+    &#x2F;**
+     * Returns the culture-specific weekday of the given date. The first day
+     * of the week corresponds to 0, the last day to 6.
+     * @static
+     * @method dayOfWeek
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} culture Culture information
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.date.dayOfWeek = function(date, culture) {
+        return (date.getUTCDay() + 7 - culture.firstDayOfWeek) % 7;
+    };
+    &#x2F;**
+     * Returns the day of the year specified by the given date. The first day
+     * of the year corresponds to 1.
+     * @static
+     * @method dayOfYear
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.date.dayOfYear = function(date) {
+        var result = date.getUTCDate(),
+            year = date.getUTCFullYear(),
+            month = date.getUTCMonth() - 1;
+            
+        while (month &gt;= 0) {
+            result += this.daysOfMonth(new Date(Date.UTC(year, month)));
+            month--;
+        }
+        return result;
+    };
+    &#x2F;**
+     * Returns a date representing the n-th day of the week specified by the
+     * given date.
+     *
+     * @example
+         var d = new Date(&#x27;2012-07-04T00:00Z&#x27;), &#x2F;&#x2F;Wednesday
+             c = { firstDayOfWeek: 1 }; &#x2F;&#x2F;culture with Monday as first weekday
+             
+         Formatter.util.date.nthDayOfWeek(
+             d, c, 0); &#x2F;&#x2F;Date representing &#x27;2012-07-02T00:00&#x27;
+             
+         Formatter.util.date.nthDayOfWeek(
+             d, c, 6); &#x2F;&#x2F;Date representing &#x27;2012-07-08T00:00&#x27;
+     
+     * @static
+     * @method nthDayOfWeek
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} culture Culture information
+     * @param {Number} n In [0,6]
+     * @return {Date}
+     *&#x2F;
+    Formatter.util.date.nthDayOfWeek = function(date, culture, n) {
+        var d = new Date(date.valueOf());
+        d.setUTCDate(d.getUTCDate() - this.dayOfWeek(date, culture) + n);
+        return d;
+    };
+    &#x2F;**
+     * Returns a date representing the first day of the week specified by
+     * the given date.
+     * @static
+     * @method firstDayOfWeek
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} culture Culture information
+     * @return {Date}
+     *&#x2F;
+    Formatter.util.date.firstDayOfWeek = function(date, culture) {
+        return this.nthDayOfWeek(date, culture, 0);
+    };
+    &#x2F;**
+     * Returns a date representing the first day of the week specified by
+     * the given date.
+     * @static
+     * @method lastDayOfWeek
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} culture Culture information
+     * @return {Date}
+     *&#x2F;
+    Formatter.util.date.lastDayOfWeek = function(date, culture) {
+        return this.nthDayOfWeek(date, culture, 6);            
+    };
+    &#x2F;**
+     * Returns a date representing the first day of the month specified by
+     * the given date.
+     * @static
+     * @method firstDayOfMonth
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Date}
+     *&#x2F;
+    Formatter.util.date.firstDayOfMonth = function(date) {
+        return new Date(new Date(date.valueOf()).setUTCDate(1));
+    };
+    &#x2F;**
+     * Returns a date representing the last day of the month specified by the
+     * given date.
+     * @static
+     * @method lastDayOfMonth
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Date}
+     *&#x2F;
+    Formatter.util.date.lastDayOfMonth = function(date) {
+        var d = new Date(date.valueOf());
+        d.setUTCDate(1);
+        d.setUTCMonth(d.getUTCMonth() + 1);
+        d.setUTCDate(0);
+        return d;
+    };
+    &#x2F;**
+     * Returns a date representing the first day of the specified year.
+     * @static
+     * @method firstDayOfYear
+     * @param {Date|Number} arg (Date is interpreted as a UTC value)
+     * @return {Date}
+     *&#x2F;
+    Formatter.util.date.firstDayOfYear = function(arg) {
+        if (!(arg instanceof Date)) { return new Date(Date.UTC(arg, 0, 1)); }
+        var d = new Date(arg.valueOf());
+        d.setUTCDate(1);
+        d.setUTCMonth(0);
+        return d;
+    };
+    &#x2F;**
+     * Returns a date representing the last day of the specified year.
+     * @static
+     * @method lastDayOfYear
+     * @param {Date|Number} arg (Date is interpreted as a UTC value)
+     * @return {Date}
+     *&#x2F;
+    Formatter.util.date.lastDayOfYear = function(arg) {
+        var d = (arg instanceof Date ?
+            new Date(arg.valueOf()) :
+            new Date(Date.UTC(arg, 0)));
+        d.setUTCDate(1);
+        d.setUTCMonth(0);
+        d.setUTCFullYear(d.getUTCFullYear() + 1);
+        d.setUTCDate(0);
+        return d;
+    };
+    &#x2F;**
+     * Returns the ISO-8601 week specified by the given date.
+     * @static
+     * @method isoWeek
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.date.isoWeek = function(date) {
+        var d = new Date(Date.UTC(date.getUTCFullYear(), 0, 4)),
+            m, &#x2F;&#x2F;monday, first calendar week 
+            result;
+        m = this.nthDayOfWeek(d, {firstDayOfWeek: 1}, 0);
+        if (date.valueOf() &lt; m.valueOf()) { &#x2F;&#x2F;date before monday (1-3 Jan.)
+            d.setUTCFullYear(d.getUTCFullYear() - 1);
+            m = this.nthDayOfWeek(d, {firstDayOfWeek: 1}, 0);
+        }
+        return Math.floor(
+            (date.valueOf() - m.valueOf()) &#x2F; this.MILLISECONDS_PER_WEEK) + 1;
+    };
+    &#x2F;**
+     * Returns the century specified by the given date.
+     * @static
+     * @method century
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.date.century = function(date) {
+        return Math.floor(date.getUTCFullYear() &#x2F; 100) + 1;
+    };
+    &#x2F;**
+     * Returns the number of past centuries specified by the given date.
+     * @static
+     * @method pastCenturies
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Number}
+     *&#x2F;
+    Formatter.util.date.pastCenturies = function(date) {
+        return Math.floor(date.getUTCFullYear() &#x2F; 100);
+    };
+    &#x2F;**
+     * Returns true if the time specified by the given date is in the range
+     * [00:00, 12:00). Returns false otherwise.
+     * @static
+     * @method isAM
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Boolean}
+     *&#x2F;
+    Formatter.util.date.isAM = function(date) {
+        var d = new Date(Date.UTC(
+            date.getUTCFullYear(),
+            date.getUTCMonth(),
+            date.getUTCDate()
+        ));
+        return (date.valueOf() - d.valueOf()) &lt; (12 * this.MILLISECONDS_PER_HOUR);
+    };
+    &#x2F;**
+     * Returns true if the time specified by the given date is in the range
+     * [12:00, 00:00). Returns false otherwise.
+     * @static
+     * @method isPM
+     * @param {Date} date Interpreted as a UTC value
+     * @return {Boolean}
+     *&#x2F;
+    Formatter.util.date.isPM = function(date) {
+        var d = new Date(Date.UTC(
+            date.getUTCFullYear(),
+            date.getUTCMonth(),
+            date.getUTCDate()
+        ));
+        return (date.valueOf() - d.valueOf()) &gt;= (12 * this.MILLISECONDS_PER_HOUR);
+    };
+    
+    &#x2F;**
+     * Number formatter.
+     * @static
+     * @class Formatter.number
+     *&#x2F;
+    Formatter.number = {};
+    &#x2F;**
+     * Returns the given number in hexadecimal exponential form.
+     * &lt;br&#x2F;&gt;&lt;br&#x2F;&gt;
+     * Details on hexadecimal exponential encoding:
+     * &lt;ul&gt;
+     * &lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hexadecimal#Hexadecimal_exponential_notation&quot;&gt;http:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hexadecimal#Hexadecimal_exponential_notation&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+     * &lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;de.wikipedia.org&#x2F;wiki&#x2F;IEEE_754&quot;&gt;http:&#x2F;&#x2F;de.wikipedia.org&#x2F;wiki&#x2F;IEEE_754&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+     * &lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.2ality.com&#x2F;2012&#x2F;04&#x2F;number-encoding.html&quot;&gt;http:&#x2F;&#x2F;www.2ality.com&#x2F;2012&#x2F;04&#x2F;number-encoding.html&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+     * &lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;osr507doc.sco.com&#x2F;en&#x2F;topics&#x2F;FltPtOps_DeNormNums.html&quot;&gt;http:&#x2F;&#x2F;osr507doc.sco.com&#x2F;en&#x2F;topics&#x2F;FltPtOps_DeNormNums.html&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+     * &lt;&#x2F;ul&gt;
+     * @static
+     * @method toHexExp
+     * @param {any} arg Number compatibel argument
+     * @return {String} Hex exponential form of the given string
+     *&#x2F;
+    Formatter.number.toHexExp = function(arg) {
+        var r,      &#x2F;&#x2F;result
+            b,      &#x2F;&#x2F;string representing the given number in base 2
+            len,    &#x2F;&#x2F;b&#x27;s length
+            pos,    &#x2F;&#x2F;floating point position in b
+            sign,   &#x2F;&#x2F;is the given number signed?
+            m,      &#x2F;&#x2F;mantissa
+            exp,    &#x2F;&#x2F;exponent
+            i,
+            ieee754_64_bias = 1023; &#x2F;&#x2F;IEEE 754 (double precision) exponent bias
+        arg = Number(arg);
+        &#x2F;&#x2F;return NaN, Infinity, -Infinity unchanged
+        if (Formatter.util.number.isSymbolicNumber(arg)) { return String(arg); }
+        &#x2F;&#x2F;distinct negative zero from zero
+        if (arg === 0) {
+            return Formatter.util.number.isSigned(arg) ? &#x27;-0x0.0p0&#x27; : &#x27;0x0.0p0&#x27;;
+        }
+        sign = arg &lt; 0;
+        arg = Math.abs(arg);
+        b = arg.toString(2);
+        pos = b.indexOf(&#x27;.&#x27;);
+        if (pos &lt; 0) { &#x2F;&#x2F;integer
+            exp = b.length - 1;
+        } else {
+            if (pos === 1 &amp;&amp; Number(b.charAt(0)) === 0) { &#x2F;&#x2F;negative exponent
+                &#x2F;&#x2F;find first fractional 1-bit
+                len = b.length;
+                i = 2;
+                while (i &lt; len &amp;&amp; b.charAt(i) !== &#x27;1&#x27;) { i++; }
+                &#x2F;&#x2F;consider exponent bias specified by IEEE 754 (double precision)
+                exp = i &gt;= ieee754_64_bias ?
+                    -(ieee754_64_bias - 1) :
+                    -(i - 1);
+            } else { &#x2F;&#x2F;positive exponent
+                exp = b.slice(0, pos).length - 1;
+            }
+        }
+        m = Number(arg &#x2F; Math.pow(2, exp)).toString(16);
+        if (m.indexOf(&#x27;.&#x27;) &lt; 0) { m = m + &#x27;.0&#x27;; }
+        r = &#x27;0x&#x27; + m + &#x27;p&#x27; + exp;
+        return sign ? &#x27;-&#x27; + r : r;
+    };
+    &#x2F;**
+     * Returns a string representing the given number in decimal form. 
+     * @static
+     * @method toDecimal
+     * @param {any} arg Number compatible value to be formatted
+     * @param {Object} [options] Formatting options. Default values:
+     *
+     {
+         precision: undefined,   &#x2F;&#x2F; Number of significant fractional digits. Data
+                                 &#x2F;&#x2F; type limited for falsy values other than 0.
+         considerZeroSign: false &#x2F;&#x2F; Whether to return a sign for negative zero or not
+     }
+     * @return {String}
+     *&#x2F;
+    Formatter.number.toDecimal = function(arg, options) {
+        options = options || {};
+        options.considerZeroSign = Boolean(options.considerZeroSign);
+        var r = &#x27;&#x27;,
+            numStr,
+            sign,
+            m,
+            exp, &#x2F;&#x2F;exponent
+            pos; &#x2F;&#x2F;position of &#x27;e&#x27; and &#x27;.&#x27;
+        &#x2F;&#x2F;return NaN, Infinity, -Infinity unchanged
+        if (Formatter.util.number.isSymbolicNumber(arg)) { return String(arg); }
+        &#x2F;&#x2F;round to precision fractional digits
+        if (options.precision || options.precision === 0) {
+            arg = Formatter.util.number.round(Number(arg), options.precision);
+        } else {
+            arg = Number(arg);
+        }
+        &#x2F;&#x2F;signed argument?
+        sign = options.considerZeroSign ?
+            Formatter.util.number.isSigned(arg) :
+            arg &lt; 0;
+        &#x2F;&#x2F;since Number.toString returns decimal notation for small numbers and
+        &#x2F;&#x2F;scientific notation for numbers greater than a certain threshold,
+        &#x2F;&#x2F;parsing is done based on the exponential form of the given number.
+        numStr = arg.toExponential();
+        pos = numStr.indexOf(&#x27;e&#x27;);
+        m = numStr.slice((numStr.charAt(0) === &#x27;-&#x27; ? 1 : 0), pos);
+        exp = Number(numStr.substr(pos + 1));
+        pos = m.indexOf(&#x27;.&#x27;);
+        if (pos &lt; 0) { &#x2F;&#x2F;integer mantissa
+            r = m;
+            pos = r.length;
+        } else {
+            r = m.slice(0, pos) + m.substr(pos + 1);
+        }
+        pos = pos + exp;
+        if (0 &lt; pos &amp;&amp; pos &lt; r.length) {
+            r = r.slice(0, pos) + &#x27;.&#x27; + r.substr(pos);
+        } else if (pos &gt; r.length) {
+            r = Formatter.util.padRight(r, &#x27;0&#x27;, pos);
+        } else if (pos &lt;= 0) {
+            r = &#x27;0.&#x27; + Formatter.util.padLeft(r, &#x27;0&#x27;, r.length - pos);
+            pos = 1;
+        }
+        &#x2F;&#x2F;add fractional zero digits if the result&#x27;s number of fractional digits
+        &#x2F;&#x2F;is less than the given precision
+        if (options.precision &amp;&amp;
+                options.precision &gt; 0 &amp;&amp;
+                r.length - pos - 1 &lt; options.precision) {
+            if (pos === r.length) { r += &#x27;.&#x27;; }
+            r = Formatter.util.padRight(r, &#x27;0&#x27;, pos + options.precision + 1);
+        }
+        &#x2F;&#x2F;add sign
+        if (sign) { r = &#x27;-&#x27; + r; }
+        return r;
+    };
+    &#x2F;**
+     * Returns a string representing the given number in scientific notation.
+     * @static
+     * @method toScientific
+     * @param {any} arg Number compatible value to be formatted
+     * @param {Object} [options] Formatting options. Default values:
+     *
+     {
+         precision: undefined,   &#x2F;&#x2F; Mantissa precision. Data type limited for falsy
+                                 &#x2F;&#x2F; values other than 0.
+         expMinWidth: 1,         &#x2F;&#x2F; Min width of the exponent (excl. &#x27;e&#x27; and sign).
+         upperCase: false,       &#x2F;&#x2F; Whether to use &#x27;e&#x27; or &#x27;E&#x27; for the exponent.
+         considerZeroSign: false &#x2F;&#x2F; Whether to return a sign for negative zero or not
+     }
+     * @return {String}
+     *&#x2F;
+    Formatter.number.toScientific = function(arg, options) {
+        options = options || {};
+        options.expMinWidth = options.expMinWidth || 1;
+        options.upperCase = Boolean(options.upperCase);
+        options.considerZeroSign = Boolean(options.considerZeroSign);
+        var r,
+            numStr,
+            sign,
+            m, &#x2F;&#x2F;mantissa
+            exp,
+            expStr = options.upperCase ? &#x27;E&#x27; : &#x27;e&#x27;,
+            len,
+            pos,
+            i;
+        arg = Number(arg);
+        numStr = String(arg);
+        if (Formatter.util.number.isSymbolicNumber(arg)) {
+            return numStr;
+        }
+        sign = options.considerZeroSign ?
+            Formatter.util.number.isSigned(Number(arg)) :
+            Number(arg) &lt; 0;
+        &#x2F;&#x2F;mantissa
+        pos = numStr.indexOf(&#x27;e&#x27;);
+        if (pos &lt; 0) {
+            numStr = arg.toExponential();
+            pos = numStr.indexOf(&#x27;e&#x27;);
+        }
+        m = Number(numStr.slice(0, pos));
+        &#x2F;&#x2F;exponent
+        expStr += numStr.charAt(pos + 1); &#x2F;&#x2F;sign
+        exp = numStr.substr(pos + 2); &#x2F;&#x2F;skip &#x27;e&#x27;, skip sign
+        len = options.expMinWidth - exp.length;
+        for (i = len; i &gt; 0; i--) { expStr += &#x27;0&#x27;; }
+        expStr += exp;
+        &#x2F;&#x2F;mantissa precision
+        if (options.precision || options.precision === 0) {
+            r = String(Formatter.util.number.round(m, options.precision));
+            if (options.precision &gt; 0) {
+                pos = r.indexOf(&#x27;.&#x27;);
+                if (pos &lt; 0) {
+                    r += &#x27;.&#x27;;
+                    r = Formatter.util.padRight(r, &#x27;0&#x27;, r.length +
+                        options.precision);
+                } else {
+                    r = Formatter.util.padRight(r, &#x27;0&#x27;,
+                        options.precision + pos + 1);
+                }
+            }
+        } else {
+            r = String(m);
+        }
+        if (m === 0 &amp;&amp; sign &amp;&amp; options.considerZeroSign) {
+            r = &#x27;-&#x27; + r;
+        }
+        return r + expStr;
+    };
+    
+    &#x2F;**
+     * Functions ought to format date components.
+     * @static
+     * @class Formatter.date
+     *&#x2F;
+    Formatter.date = {};
+    
+    &#x2F;**
+     * Returns a string representing the specified year.
+     * 
+     * Negative years are formatted with the prefix &#x27;-&#x27; by default. Set the
+     * option property &#x60;bcPrefix&#x60; or &#x60;bcPostfix&#x60; to change the default behavior.
+     * Note that setting a non-falsy postfix implies the prefix &#x27;&#x27;.
+     * 
+     * The number of digits in the resulting string depends on the option
+     * properties &#x60;maxDigits&#x60; and &#x60;leadingZeros&#x60;.
+     * The resulting year is zero padded if &#x60;maxDigits&#x60; is greater than the
+     * number of year digits and &#x60;leadingZeros&#x60; is set to true.
+     * Most significant digits of the resulting year are truncated if &#x60;maxDigits&#x60;
+     * is less than the number of year digits. In that case leading zeros are
+     * also truncated except &#x60;leadingZeros&#x60; is set to true.
+     * 
+     * @example
+         var d = new Date(&#x27;2012-01-01T00:00Z&#x27;);
+         Formatter.date.year(d); &#x2F;&#x2F;&#x27;2012&#x27;
+         Formatter.date.year(d, {maxDigits:3}); &#x2F;&#x2F;&#x27;12&#x27;
+         Formatter.date.year(d, {maxDigits:3, leadingZeros:true}); &#x2F;&#x2F;&#x27;012&#x27;
+         Formatter.date.year(d, {maxDigits:5, leadingZeros:true}); &#x2F;&#x2F;&#x27;02012&#x27;
+         
+         d = new Date(Date.UTC(-2012, 1));
+         Formatter.date.year(d); &#x2F;&#x2F;&#x27;-2012&#x27;
+         Formatter.date.year(d, {bcPostfix: &#x27; BC.&#x27;}); &#x2F;&#x2F;&#x27;2012 BC.&#x27;
+         Formatter.date.year(d, {bcPrefix: &#x27;BC.&#x27;}); &#x2F;&#x2F;&#x27;BC.2012&#x27;
+     
+     * @static
+     * @method year
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} [options] Format options. Default values are:
+     * 
+        {
+            bcPrefix: &#x27;-&#x27;,
+            bcPostfix: &#x27;&#x27;,
+            leadingZeros: false
+            maxDigits: number of year digits
+        }
+     *
+     * @return {String}
+     *&#x2F;
+    Formatter.date.year = function(date, options) {
+        var y = date.getUTCFullYear(),
+            bc = (y &lt; 0),
+            opt = options || {};
+        opt.bcPostfix = opt.bcPostfix || &#x27;&#x27;;
+        opt.bcPrefix = (opt.bcPostfix ? &#x27;&#x27; : (opt.bcPrefix || &#x27;-&#x27;));
+        opt.leadingZeros = opt.leadingZeros || false;
+        opt.maxDigits = opt.maxDigits ||
+                (bc ? String(y).length - 1 : String(y).length);
+        y = String(Math.abs(y % Math.pow(10, opt.maxDigits)));
+        if (opt.leadingZeros) {
+            y = Formatter.util.padLeft(y, &#x27;0&#x27;, opt.maxDigits);
+        }
+        return (bc ? [opt.bcPrefix, y, opt.bcPostfix].join(&#x27;&#x27;) : y);
+    };
+    
+    &#x2F;**
+     * Returns a string representing the day of the year specified by the
+     * given date.
+     * @static
+     * @method dayOfYear
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Boolean} leadingZeros Zero padded result?
+     * @return {String}
+     *&#x2F;
+    Formatter.date.dayOfYear = function(date, leadingZeros) {
+        return leadingZeros ?
+            Formatter.util.padLeft(Formatter.util.date.dayOfYear(date), &#x27;0&#x27;, 3) :
+            String(Formatter.util.date.dayOfYear(date));
+    };
+    &#x2F;**
+     * Returns a string representing the month specified by the given date.
+     * @static
+     * @method month
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Boolean} leadingZero Zero padded result?
+     * @return {String}
+     *&#x2F;
+     Formatter.date.month = function(date, leadingZero) {
+        var m = String(date.getUTCMonth() + 1);
+        if (leadingZero &amp;&amp; m.length &lt; 2) { return &#x27;0&#x27; + m; }
+        return m;
+    };
+    &#x2F;**
+     * Returns a string representing the day of the month specified by the
+     * given date.
+     * @static
+     * @method dayOfMonth
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Boolean} leadingZero Zero padded result?
+     * @return {String}
+     *&#x2F;
+     Formatter.date.dayOfMonth = function(date, leadingZero) {
+        var d = String(date.getUTCDate());
+        if (leadingZero &amp;&amp; d.length &lt; 2) { return &#x27;0&#x27; + d; }
+        return d;
+    };
+    &#x2F;**
+     * Returns the culture-specific month name specfied by the given date.
+     * @static
+     * @method monthName
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} culture Culture information
+     * @return {String}
+     *&#x2F;
+     Formatter.date.monthName = function(date, culture) {
+        return culture.months[date.getUTCMonth()];
+    };
+    &#x2F;**
+     * Returns the culture-specific abbreviated month name specfied by the
+     * given date.
+     * @static
+     * @method abbreviatedMonthName
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} culture Culture information
+     * @return {String}
+     *&#x2F;
+     Formatter.date.abbreviatedMonthName = function(date, culture) {
+        return culture.monthsAbbr[date.getUTCMonth()];
+    };
+    &#x2F;**
+     * Returns the culture-specific weekday name specfied by the given date.
+     * @static
+     * @method weekdayName
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} culture Culture information
+     * @return {String}
+     *&#x2F;
+     Formatter.date.weekdayName = function(date, culture) {
+        return culture.weekdays[date.getUTCDay()];
+    };
+    &#x2F;**
+     * Returns the culture-specific abbreviated weekday name specfied by
+     * the given date.
+     * @static
+     * @method abbreviatedWeekdayName
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} culture Culture information
+     * @return {String}
+     *&#x2F;
+     Formatter.date.abbreviatedWeekdayName = function(date, culture) {
+        return culture.weekdaysAbbr[date.getUTCDay()];
+    };
+    &#x2F;**
+     * Returns the formatted hours specified by the given date.
+     * @static
+     * @method hours
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Boolean} leadingZero Zero padded result?
+     * @param {Boolean} h12 Hours in [1,12]?
+     * @return {String}
+     *&#x2F;
+    Formatter.date.hours = function(date, leadingZero, h12) {
+        var h = date.getUTCHours();
+        if (h12) {
+            h = h % 12;
+            if (h === 0) { h = 12; }
+        }
+        return String(leadingZero &amp;&amp; h &lt; 10 ? [&#x27;0&#x27;, h].join(&#x27;&#x27;) : h);
+    };
+    &#x2F;**
+     * Returns the formatted minutes specified by the given date.
+     * @static
+     * @method minutes
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Boolean} leadingZero Zero padded result?
+     * @return {String}
+     *&#x2F;
+    Formatter.date.minutes = function(date, leadingZero) {
+        var m = date.getUTCMinutes();
+        return String(leadingZero &amp;&amp; m &lt; 10 ? [&#x27;0&#x27;, m].join(&#x27;&#x27;) : m);
+    };
+    &#x2F;**
+     * Returns the formatted seconds specified by the given date.
+     * @static
+     * @method seconds
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Boolean} leadingZero Zero padded result?
+     * @return {String}
+     *&#x2F;
+    Formatter.date.seconds = function(date, leadingZero) {
+        var s = date.getUTCSeconds();
+        return String(leadingZero &amp;&amp; s &lt; 10 ? [&#x27;0&#x27;, s].join(&#x27;&#x27;) : s);
+    };
+    &#x2F;**
+     * Returns the formatted milliseconds specified by the given date.
+     * @static
+     * @method milliseconds
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Boolean} leadingZeros Zero padded result?
+     * @return {String}
+     *&#x2F;
+    Formatter.date.milliseconds = function(date, leadingZeros) {
+        var ms = date.getUTCMilliseconds();
+        if (leadingZeros) {
+            return Formatter.util.pad(ms, &#x27;0&#x27;, 3, true);
+        }
+        return String(ms);
+    };
+    &#x2F;**
+     * Returns a string representing the morning&#x2F;afternoon designator for the
+     * time specified by the given date.
+     * @static
+     * @method timeDesignator
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Object} culture Culture information
+     * @return {String}
+     *&#x2F;
+    Formatter.date.timeDesignator = function(date, culture) {
+        return (Formatter.util.date.isAM(date) ?
+            culture.amToken :
+            culture.pmToken);
+    };
+    &#x2F;**
+     * Returns a string representing the given date&#x27;s time zone offset from UTC.
+     * @static
+     * @method timezoneOffset
+     * @param {Date} date Interpreted as a date with the same timezone as
+     *        provided by the host OS.
+     * @return {String}
+     *&#x2F;
+    Formatter.date.timezoneOffset = function(date) {
+        var tz = date.toTimeString().match(&#x2F;GMT((?:\+|\-)\d{4})&#x2F;);
+        return (Formatter.util.isArray(tz) &amp;&amp; tz.length &gt; 1 ? tz[1] : undefined);
+    };
+    &#x2F;**
+     * Returns a string representing the time zone abbreviation specified by
+     * the given date.
+     * @static
+     * @method abbreviatedTimezone
+     * @param {Date} date Interpreted as a date with the same timezone as
+     *        provided by the host OS.
+     * @return {String}
+     *&#x2F;
+    Formatter.date.abbreviatedTimezone = function(date) {
+        var tz = date.toTimeString().match(&#x2F;\((\w+)\)&#x2F;);
+        return (Formatter.util.isArray(tz) &amp;&amp; tz.length &gt; 1 ? tz[1] : undefined);
+    };
+    &#x2F;**
+     * Returns a string representing the 24h time specified by the given date.
+     * @static
+     * @method time
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Boolean} leadingZeros Zero padded time components?
+     * @return {String}
+     *&#x2F;
+    Formatter.date.time = function(date, leadingZeros) {
+        return this.hours(date, leadingZeros) + &#x27;:&#x27; +
+            this.minutes(date, leadingZeros) + &#x27;:&#x27; +
+            this.seconds(date, leadingZeros);
+    };
+    &#x2F;**
+     * Returns a string representing the 12h time specified by the given date.
+     * @static
+     * @method time12
+     * @param {Date} date Interpreted as a UTC value
+     * @param {Boolean} leadingZeros Zero padded time components?
+     * @param {Boolean} designator Including time designator (AM&#x2F;PM)?
+     * @return {String}
+     *&#x2F;
+    Formatter.date.time12 = function(date, leadingZeros, designator, culture) {
+        var t = this.hours(date, leadingZeros, true) + &#x27;:&#x27; +
+            this.minutes(date, leadingZeros) + &#x27;:&#x27; +
+            this.seconds(date, leadingZeros);
+        if (designator) {
+            t += (&#x27; &#x27; + this.timeDesignator(date, culture));
+        }
+        return t;
+    };
+    
+    &#x2F;*
+     * Exports this module to node.
+     *&#x2F;
+    function exportNode(mod) {
+        &#x2F;&#x2F;load default culture and flavor module
+        mod.Formatter.options({
+            cultureId: mod.Formatter.options().cultureId(),
+            flavorId: mod.Formatter.options().flavorId()
+        });
+        module.exports = mod;
+    }
+    &#x2F;*
+     * Exports this module as an AMD module. Initially loading default flavor
+     * and culture modules requires them to be specified as dependencies of
+     * this module.
+     *&#x2F;
+    function exportAmd(mod) {
+        &#x2F;&#x2F;load default culture and flavor module
+        var culturePath = [&#x27;.&#x27;,
+                __.DIR_CULTURES,
+                mod.Formatter.options().cultureId()].join(&#x27;&#x2F;&#x27;),
+            flavorPath = [&#x27;.&#x27;,
+                __.DIR_FLAVORS,
+                mod.Formatter.options().flavorId()].join(&#x27;&#x2F;&#x27;),
+            baseUrl;
+        define([culturePath, flavorPath, &#x27;require&#x27;],
+            function(culture, flavor, require) {
+                &#x2F;&#x2F;extract require&#x27;s baseUrl
+                baseUrl = require.toUrl(&#x27;.&#x27;).slice(0, -1);
+                &#x2F;&#x2F;extract the module directory, relative to baseUrl
+                __.modulePath = require.toUrl(&#x27;..&#x2F;&#x27;).slice(baseUrl.length, -2);
+                __.cultures[mod.Formatter.options().cultureId()] = culture;
+                __.flavors[mod.Formatter.options().flavorId()] = flavor;
+                mod.Formatter.options({
+                    cultureId: mod.Formatter.options().cultureId(),
+                    flavorId: mod.Formatter.options().flavorId()
+                });
+                return mod;
+        });
+    }
+    &#x2F;*
+     * Exports this module to the global scope.
+     *&#x2F;
+    function exportGlobal() {
+        if (root.pat &amp;&amp; root.pat._private) {
+            root.pat.Formatter = Formatter;
+            &#x2F;&#x2F;culture modules available?
+            if (typeof root.pat._private.cultures === &#x27;object&#x27;) {
+                __.cultures = root.pat._private.cultures;
+                &#x2F;&#x2F;use default culture if available
+                if (__.cultures[Formatter.defaultOptions.cultureId]) {
+                    Formatter.options({
+                        cultureId: Formatter.defaultOptions.cultureId
+                    });
+                }
+                &#x2F;&#x2F;use the first culture of the &lt;script&gt; sequence of imported
+                &#x2F;&#x2F;culture scripts. fallback: first culture property as defined
+                &#x2F;&#x2F;by foreach
+                else if (__.countOwnProperties(__.cultures) &gt; 0) {
+                    Formatter.defaultOptions.cultureId =
+                        root.pat._private.preferredCultureId ||
+                        __.ownPropertyNames(__.cultures)[0];
+                    Formatter.options({
+                        cultureId: Formatter.defaultOptions.cultureId
+                    });
+                }
+            }
+            &#x2F;&#x2F;flavor modules available?
+            if (typeof root.pat._private.flavors === &#x27;object&#x27;) {
+                __.flavors = root.pat._private.flavors;
+                &#x2F;&#x2F;use default flavor if available
+                if (__.flavors[Formatter.defaultOptions.flavorId]) {
+                    Formatter.options({
+                        flavorId: Formatter.defaultOptions.flavorId
+                    });
+                }
+                &#x2F;&#x2F;use the first flavor of the &lt;script&gt; sequence of imported
+                &#x2F;&#x2F;flavor scripts. fallback: first flavor property as defined
+                &#x2F;&#x2F;by foreach
+                else if (__.countOwnProperties(__.flavors) &gt; 0) {
+                    Formatter.options({
+                        flavorId: root.pat._private.preferredFlavorId ||
+                            __.ownPropertyNames(__.flavors)[0]
+                    });
+                }
+            }
+            root.pat._private = mod._private;
+        } else {
+            __.err(&#x27;Load culture and flavor first&#x27;);
+        }
+    }
+    &#x2F;*
+     * Creates the default Formatter instance and exports this module.
+     *&#x2F;
+    function init() {
+        Formatter.defaultOptions = __.initialDefaultFormatterOptions();
+        __.instance = new Formatter();
+        mod = {
+            Formatter: Formatter,
+            _private: __
+        };
+        if (typeof module !== &#x27;undefined&#x27;) {
+            exportNode(mod);
+        }
+        else if (typeof define !== &#x27;undefined&#x27; &amp;&amp; define.amd) { &#x2F;&#x2F;AMD
+            exportAmd(mod);
+        }
+        else if (root) {
+            exportGlobal(mod);
+        }
+        __.initialState.set();        
+    }
+    
+    init();
+    
+}(this));
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>
