@@ -2,7 +2,7 @@
 A data formatter. Data to be formatted is described by format specifiers of a
 certain flavor. Currently supported flavors:
 
-+ [Java](./lib/flavors/java.md) (java.util.Formatter)
++ [Java](https://github.com/mpecherstorfer/pat/blob/master/lib/flavors/java.md) (java.util.Formatter)
 
 ##Node environment
 ### Installation
@@ -96,7 +96,5 @@ The setter expects an object with one or more of the following properties:
   specifier (e.g. '%n'). Defaults to '\n'.
 
 ## Flavor documentation
-[Java flavored format specifiers](./lib/java.md)
+[Java flavored format specifiers](https://github.com/mpecherstorfer/pat/blob/master/lib/flavors/java.md)
 
-## API documentation
-[API documentation](./doc/index.html)

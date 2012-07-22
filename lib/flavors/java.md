@@ -1,5 +1,5 @@
 # Java flavored formatter
-This module includes a printf-style data formatter that parses format specifiers known from Java's Formatter class (```java.util.Formatter```).
+This module includes an sprintf-style data formatter that parses format specifiers known from ```java.util.Formatter```.
 
 ## Format strings
 The ```format``` method requires a format string and the arguments to be formatted. A format string includes normal text and format specifiers. The format specifiers describe how to format given arguments.
@@ -42,19 +42,19 @@ It's possible to combine the three forms of indexing:
 <table>
   <thead>
     <tr>
-      <td>**Conversion**</td>
-      <td>**Description**</td>
+      <td>Conversion</td>
+      <td>Description</td>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>```'b'```, ```'B'```</td>
+      <td>'b', 'B'</td>
       <td>
         Result is 'false' if Boolean(argument) is false, 'true' otherwise. Uppercase when 'B'.
       </td>
     </tr>
     <tr>
-      <td>```'s'```, ```'S'```</td>
+      <td>'s', 'S'</td>
       <td>
         Result is the string argument. Uppercase when 'S'.
       </td>
@@ -70,7 +70,7 @@ It's possible to combine the three forms of indexing:
 
 *Applicable flags:*
 
-+ ```'-'```: Left justification when space padding (default is right justification)
++ '-': Left justification when space padding (default is right justification)
 + Other flags are ignored
 
 *Example:*
@@ -81,13 +81,13 @@ It's possible to combine the three forms of indexing:
 <table>
   <thead>
     <tr>
-      <td>**Conversion**</td>
-      <td>**Description**</td>
+      <td>Conversion</td>
+      <td>Description</td>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>```'c'```, ```'C'```</td>
+      <td>'c', 'C'</td>
       <td>
         Result is a Unicode character. The corresponding argument is a numeric Codepoint (UTF-16 or UCS-2, depending on the environment) or a string. Numeric codepoints are resolved by ```String.fromCharCode```, a string is mapped to it's first character. Uppercase when 'C' and available.
       </td>
@@ -103,7 +103,7 @@ It's possible to combine the three forms of indexing:
 
 *Applicable flags:*
 
-+ ```'-'```: Left justification when space padding (default is right justification)
++ '-': Left justification when space padding (default is right justification)
 + Other flags are ignored
 
 *Example:*
@@ -114,25 +114,25 @@ It's possible to combine the three forms of indexing:
 <table>
   <thead>
     <tr>
-      <td>**Conversion**</td>
-      <td>**Description**</td>
+      <td>Conversion</td>
+      <td>Description</td>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>```'d'```</td>
+      <td>'d'</td>
       <td>
         Decimal integer format (culture-specific). 
       </td>
     </tr>
     <tr>
-      <td>```'o'```</td>
+      <td>'o'</td>
       <td>
         Octal integer format.
       </td>
     </tr>
     <tr>
-      <td>```'x'```, ```'X'```</td>
+      <td>'x', 'X'</td>
       <td>
         Hexadecimal integer format. Uppercase when 'X'.
       </td>
@@ -149,12 +149,12 @@ It's possible to combine the three forms of indexing:
 
 *Applicable flags:*
 
-+ ```'-'```: Left justification when space padding (default is right justification)
-+ ```'0'```: Zero padding instead of space padding to guarantee ```width```
-+ ```','```: Include the culture-specific grouping separator (default is to format numbers without the grouping separator)
-+ ```'+'```: Positive numbers have a leading '+' (default is to format positive numbers without any prefix)
-+ ```' '```: Positive numbers have a leading space (default is to format positive numbers without any prefix)
-+ ```'('```: Negative values are enclosed by parantheses (default is to format negative numbers with '-' prefix)
++ '-': Left justification when space padding (default is right justification)
++ '0': Zero padding instead of space padding to guarantee ```width```
++ ',': Include the culture-specific grouping separator (default is to format numbers without the grouping separator)
++ '+': Positive numbers have a leading '+' (default is to format positive numbers without any prefix)
++ ' ': Positive numbers have a leading space (default is to format positive numbers without any prefix)
++ '(': Negative values are enclosed by parantheses (default is to format negative numbers with '-' prefix)
 
 *Example:*
 
@@ -165,31 +165,31 @@ It's possible to combine the three forms of indexing:
 <table>
   <thead>
     <tr>
-      <td>**Conversion**</td>
-      <td>**Description**</td>
+      <td>Conversion</td>
+      <td>Description</td>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>```'f'```</td>
+      <td>'f'</td>
       <td>
         Decimal number format (culture-specific).
       </td>
     </tr>
     <tr>
-      <td>```'e'```, ```'E'```</td>
+      <td>'e', 'E'</td>
       <td>
         Computerized scientific notation (culture-specific).
       </td>
     </tr>
     <tr>
-      <td>```'g'```, ```'G'```</td>
+      <td>'g', 'G'</td>
       <td>
         General scientific notation (culture-specific).
       </td>
     </tr>
     <tr>
-      <td>```'a'```, ```'A'```</td>
+      <td>'a', 'A'</td>
       <td>
         Hexadecimal exponential notation.
       </td>
@@ -206,12 +206,12 @@ It's possible to combine the three forms of indexing:
 
 *Applicable flags:*
 
-+ ```'-'```: Left justification when space padding (default is right justification)
-+ ```'0'```: Zero padding instead of space padding to guarantee ```width```
-+ ```','```: Include the culture-specific grouping separator (default is to format numbers without the grouping separator)
-+ ```'+'```: Positive numbers have a leading '+' (default is to format positive numbers without any prefix)
-+ ```' '```: Positive numbers have a leading space (default is to format positive numbers without any prefix)
-+ ```'('```: Negative values are enclosed by parantheses (default is to format negative numbers with '-' prefix)
++ '-': Left justification when space padding (default is right justification)
++ '0': Zero padding instead of space padding to guarantee ```width```
++ ',': Include the culture-specific grouping separator (default is to format numbers without the grouping separator)
++ '+': Positive numbers have a leading '+' (default is to format positive numbers without any prefix)
++ ' ': Positive numbers have a leading space (default is to format positive numbers without any prefix)
++ '(': Negative values are enclosed by parantheses (default is to format negative numbers with '-' prefix)
 
 *Example:*
 
@@ -225,8 +225,8 @@ It's possible to combine the three forms of indexing:
 <table>
   <thead>
     <tr>
-      <td>**Conversion**</td>
-      <td>**Description**</td>
+      <td>Conversion</td>
+      <td>Description</td>
     </tr>
   </thead>
   <tbody>
@@ -234,73 +234,73 @@ It's possible to combine the three forms of indexing:
       <td colspan="2" align="center">*Time components*</td>
     </tr>
     <tr>
-      <td>```'H'```</td>
+      <td>'H'</td>
       <td>
         Hours of the specified day, from '00' to '23'.
       </td>
     </tr>
     <tr>
-      <td>```'k'```</td>
+      <td>'k'</td>
       <td>
         Hours of the specified day, from '0' to '23'.
       </td>
     </tr>
     <tr>
-      <td>```'I'```</td>
+      <td>'I'</td>
       <td>
         Hours of the specified day, from '01' to '12'.
       </td>
     </tr>
     <tr>
-      <td>```'l'```</td>
+      <td>'l'</td>
       <td>
         Hours of the specified day, from '1' to '12'.
       </td>
     </tr>
     <tr>
-      <td>```'p'```</td>
+      <td>'p'</td>
       <td>
         Culture specific morning/afternoon string (e.g. 'am' or 'pm'). '%Tp' for upper case letters.
       </td>
     </tr>
     <tr>
-      <td>```'M'```</td>
+      <td>'M'</td>
       <td>
         Minutes of the specified hour, from '00' to '59'.
       </td>
     </tr>
     <tr>
-      <td>```'S'```</td>
+      <td>'S'</td>
       <td>
         Seconds of the specified minute, from '00' to '59'.
       </td>
     </tr>
     <tr>
-      <td>```'L'```</td>
+      <td>'L'</td>
       <td>
         Milliseconds of the specified second, from '001' to '999'.
       </td>
     </tr>
     <tr>
-      <td>```'s'```</td>
+      <td>'s'</td>
       <td>
         UNIX timestamp: seconds since the beginning of the UNIX epoche (1970-01-01T00:00:00Z)
       </td>
     </tr>
     <tr>
-      <td>```'Q'```</td>
+      <td>'Q'</td>
       <td>
         UNIX timestamp in milliseconds.
       </td>
     </tr>
     <tr>
-      <td>```'z'```</td>
+      <td>'z'</td>
       <td>
         Timezone offset from the corresponding date to GMT in hours and minutes. -HHMM if the current date is "ahead", +HHMM if it is "behind" GMT. The timezone of the corresponding date is provided by the host OS of the JavaScript interpreter.
       </td>
     </tr>
     <tr>
-      <td>```'Z'```</td>
+      <td>'Z'</td>
       <td>
         Abbreviated time zone, e.g. 'CEST' for 'Central European Summer Time'. The timezone of the corresponding date is provided by the host OS of the JavaScript interpreter.
       </td>
@@ -309,73 +309,73 @@ It's possible to combine the three forms of indexing:
       <td colspan="2" align="center"><br/>*Date components*</td>
     </tr>
     <tr>
-      <td>```'Y'```</td>
+      <td>'Y'</td>
       <td>
         Year, formatted as at least four digits with leading zeros as necessary.
       </td>
     </tr>
     <tr>
-      <td>```'y'```</td>
+      <td>'y'</td>
       <td>
         Last two digits of the year, formatted with leading zeros as necessary, from '00' to '99'.
       </td>
     </tr>
     <tr>
-      <td>```'m'```</td>
+      <td>'m'</td>
       <td>
         Month, formatted as two digits with leading zeros as necessary, from '01' to '12'. 
       </td>
     </tr>
     <tr>
-      <td>```'d'```</td>
+      <td>'d'</td>
       <td>
         Day of month, formatted as two digits with leading zeros as necessary, from '01' to '31'.
       </td>
     </tr>
     <tr>
-      <td>```'e'```</td>
+      <td>'e'</td>
       <td>
         Day of month, formatted as two digits, from '1' to '31'. 
       </td>
     </tr>
     <tr>
-      <td>```'j'```</td>
+      <td>'j'</td>
       <td>
         Day of year, formatted as three digits with leading zeros as necessary, from '001' to '366'. 
       </td>
     </tr>
     <tr>
-      <td>```'A'```</td>
+      <td>'A'</td>
       <td>
         Culture-specific weekday name.
       </td>
     </tr>
     <tr>
-      <td>```'a'```</td>
+      <td>'a'</td>
       <td>
         Culture-specific abbreviated weekday name.
       </td>
     </tr>
     <tr>
-      <td>```'B'```</td>
+      <td>'B'</td>
       <td>
         Culture-specific month name.
       </td>
     </tr>
     <tr>
-      <td>```'b'```, ```'h'```</td>
+      <td>'b', 'h'</td>
       <td>
         Culture-specific abbreviated month name.
       </td>
     </tr>
     <tr>
-      <td>```'C'```</td>
+      <td>'C'</td>
       <td>
         Past centuries: year / 100, formatted as two digits with leading zero as necessary.
       </td>
     </tr>
     <tr>
-      <td>```'V'```</td>
+      <td>'V'</td>
       <td>
         The ISO 8601 week number of the corresponding date, from '01' to '53'. Week 1 is the first week that has at least 4 days in the new year.
       </td>
@@ -384,37 +384,37 @@ It's possible to combine the three forms of indexing:
       <td colspan="2" align="center"><br/>*Combinations*</td>
     </tr>
     <tr>
-      <td>```'R'```</td>
+      <td>'R'</td>
       <td>
         24-hour time format: '%tH:%tM', e.g. '20:15'
       </td>
     </tr>
     <tr>
-      <td>```'T'```</td>
+      <td>'T'</td>
       <td>
         24-hour time format: '%tH:%tM:%tS', e.g. '20:15:00'
       </td>
     </tr>
     <tr>
-      <td>```'r'```</td>
+      <td>'r'</td>
       <td>
         12-hour time format: '%tI:%tM:%tS %Tp', e.g. '08:15:00 pm'
       </td>
     </tr>
     <tr>
-      <td>```'F'```</td>
+      <td>'F'</td>
       <td>
         ISO 8601 formatted date: '%tY-%tm-%td', e.g. '2012-07-21'
       </td>
     </tr>
     <tr>
-      <td>```'D'```</td>
+      <td>'D'</td>
       <td>
         Date formatted as '%tm/%td/%ty', e.g. '07/21/12'
       </td>
     </tr>
     <tr>
-      <td>```'c'```</td>
+      <td>'c'</td>
       <td>
         Date and time formatted as '%ta %tb %td %tT %tZ %tY', e.g. 'Sat Jul 21 20:15:00 CEST 2012'
       </td>
@@ -430,8 +430,8 @@ It's possible to combine the three forms of indexing:
 
 *Applicable flags:*
 
-+ ```'-'```: Left justification when space padding (default is right justification)
-+ ```'#'```: If set, the date argument is interpreted as locale date, which means the date is interpreted with the timezone provided by the host OS of the JavaScript interpreter. If not set, a date is interpreted as UTC date
++ '-': Left justification when space padding (default is right justification)
++ '#': If set, the date argument is interpreted as locale date, which means the date is interpreted with the timezone provided by the host OS of the JavaScript interpreter. If not set, a date is interpreted as UTC date
 + Other flags are ignored
 
 *Example:*
@@ -442,19 +442,19 @@ It's possible to combine the three forms of indexing:
 <table>
   <thead>
     <tr>
-      <td>**Conversion**</td>
-      <td>**Description**</td>
+      <td>Conversion</td>
+      <td>Description</td>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>```'%'```</td>
+      <td>'%'</td>
       <td>
         Result is '%' (escape sequence).
       </td>
     </tr>
     <tr>
-      <td>```'n'```</td>
+      <td>'n'</td>
       <td>
         Result is the newline string as defined in the Formatter's options (defaults to '\n').
       </td>
@@ -466,19 +466,19 @@ It's possible to combine the three forms of indexing:
 <table>
   <thead>
     <tr>
-      <td>**Conversion**</td>
-      <td>**Description**</td>
+      <td>Conversion</td>
+      <td>Description</td>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>```'h'```, ```H```</td>
+      <td>'h', 'H'</td>
       <td>
         Hexadecimal hash code of the object argument or null.
       </td>
     </tr>
     <tr>
-      <td>```'N'```</td>
+      <td>'N'</td>
       <td>
         Nanoseconds of the corresponding date.
       </td>
